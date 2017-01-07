@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Faonni
+ *  
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade module to newer
+ * versions in the future.
+ * 
+ * @package     Faonni_ReCaptcha
+ * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<!--
+	ReCaptcha form config
+	-->	
+    <type name="Faonni\ReCaptcha\Model\Form\FormConfig">		
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="customer_account_create" xsi:type="array">
+                    <item name="label" xsi:type="string">Create user</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+                    <item name="post" xsi:type="string">customer_account_createpost</item>
+                </item>  				
+                <item name="customer_account_login" xsi:type="array">
+                    <item name="label" xsi:type="string">Login</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+                    <item name="post" xsi:type="string">customer_account_loginpost</item>
+                </item>              
+                <item name="customer_account_forgotpassword" xsi:type="array">
+                    <item name="label" xsi:type="string">Forgot password</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+                    <item name="post" xsi:type="string">customer_account_forgotpasswordpost</item>
+                </item>                              
+                <item name="contacts_index_index" xsi:type="array">
+                    <item name="label" xsi:type="string">Contact Us</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+                    <item name="post" xsi:type="string">contacts_index_post</item>
+                </item>                
+            </argument>
+        </arguments>
+    </type>	
+</config> 
