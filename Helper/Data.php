@@ -205,7 +205,22 @@ class Data extends AbstractHelper
     {
         return $this->isEnabled() && isset($this->_posts[$name]);
     }
-                                	
+    
+    /**
+     * Get the redirect URL
+     *
+     * @param  string $post
+     * @return string
+     */
+    public function getRedirectUrl($post)
+    {
+		foreach ($this->_formConfig->getAvailableForms() as $name) {
+			if ($this->_formConfig->getFormPost($name) == $post) {
+				return str_replace('_', '/', $name);
+			}
+		}        
+    }	
+                                    	
     /**
      * Retrieve store configuration data
      *
