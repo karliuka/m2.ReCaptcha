@@ -52,7 +52,54 @@ class Form extends Template
         $this->_helper = $helper;
         parent::__construct($context, $data);
     }
+    
+    /**
+     * Check ReCaptcha functionality should be enabled
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->_helper->isEnabled();
+    } 
+    
+    /**
+     * Retrieve Site Key
+     *
+     * @return  string|null
+     */
+    public function getSiteKey()
+    {
+        return $this->_helper->getSiteKey();
+    }
 
- 
+    /**
+     * Retrieve Type of ReCAPTCHA
+     *
+     * @return  string|null
+     */
+    public function getType()
+    {
+        return $this->_helper->getType();
+    } 
+
+    /**
+     * Retrieve Size of ReCAPTCHA
+     *
+     * @return  string|null
+     */
+    public function getSize()
+    {
+        return $this->_helper->getSize();
+    } 
+
+    /**
+     * Retrieve Color theme of ReCAPTCHA
+     *
+     * @return  string|null
+     */
+    public function getTheme()
+    {
+        return $this->_helper->getTheme();
+    }               
 } 
- 

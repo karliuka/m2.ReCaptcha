@@ -23,12 +23,42 @@ namespace Faonni\ReCaptcha\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\SecurityViolationException;
+use Magento\Framework\Phrase;
+use Faonni\ReCaptcha\Model\Form\FormConfig;
+use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
  * ReCaptcha Validate observer
  */
 class ValidateObserver implements ObserverInterface
-{	
+{
+    /**
+     * Helper instance
+     *
+     * @var \Faonni\ReCaptcha\Helper\Data
+     */
+    protected $_helper; 
+    
+    /**
+     * @var \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress
+     */    
+    protected $_remoteAddress;
+        
+    /**
+     * @param \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress $remoteAddress 
+     * @param \Faonni\ReCaptcha\Helper\Data $helper
+     */
+    public function __construct(
+        RemoteAddress $remoteAddress,
+        ReCaptchaHelper $helper
+    ) {
+        $this->_remoteAddress = $remoteAddress;
+        $this->_helper = $helper;
+    }
+
     /**
      * Handler for controller action predispatch event
      *
@@ -37,5 +67,46 @@ class ValidateObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
+		$request = $observer->getEvent()->getRequest();	
+		$action = strtolower($request->getFullActionName());
+		
+		if ($this->_helper->isPostAllowed($action)) {
+			$captcha = $request->getPost('g-recaptcha-response');
+			if (!empty($captcha)){
+				$client = $this->getClient('https://www.google.com/recaptcha/api/siteverify');
+				$client->setParameterPost(array(
+					'secret'   => $this->_helper->getSecretKey(),
+					'response' => $captcha,
+					'remoteip' => $this->_remoteAddress->getRemoteAddress(),
+				));
+				
+				$response = $client->request(Zend_Http_Client::POST);
+				if($response->isSuccessful()){
+					$json = json_decode($response->getBody());
+					if(!empty($json->success) && true == $json->success){
+						return $this;
+					}		
+				}
+			}
+			$message = new Phrase('There was an error with the recaptcha code, please try again.');
+			if ($action == 'customer_account_forgotpasswordpost') {
+				throw new SecurityViolationException($message);	
+			}
+			throw new LocalizedException($message);					
+		}
     }
+    
+    /**
+     * Returns the Zend Http Client
+	 *
+     * @param string $url	 
+     * @return Zend_Http_Client
+     */
+    public function getClient($url) 
+	{
+		return new \Zend_Http_Client($url, array(
+			'adapter'     => 'Zend_Http_Client_Adapter_Curl',
+			'curloptions' => array(CURLOPT_SSL_VERIFYPEER => false),
+		));
+    }	    
 }  

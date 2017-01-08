@@ -26,7 +26,9 @@
     <default>
         <customer>
             <recaptcha>
-				<enable>0</enable>				
+				<enable>0</enable>
+                <site_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <secret_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />								
 				<forms>customer_account_create,customer_account_forgotpassword,contacts_index_index</forms>
 				<type>image</type>
 				<size>normal</size>

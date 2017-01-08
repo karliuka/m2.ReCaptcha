@@ -27,7 +27,7 @@
         <section id="customer">
             <group id="recaptcha" translate="label" type="text" sortOrder="111" showInDefault="1" showInWebsite="1" showInStore="0">
                 <label>ReCAPTCHA</label>
-                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Enable ReCAPTCHA on Storefront</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
@@ -35,42 +35,42 @@
                     <label>Site Key</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>                    
                 </field>
                 <field id="secret_key" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Secret Key</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>                    
                 </field>                                 
                 <field id="forms" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Forms</label>
                     <source_model>Faonni\ReCaptcha\Model\Config\Source\Form</source_model>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>
                 </field>
                 <field id="type" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Type of ReCAPTCHA</label>
                     <source_model>Faonni\ReCaptcha\Model\Config\Source\Type</source_model>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>
                 </field> 
                 <field id="size" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Size of ReCAPTCHA</label>
                     <source_model>Faonni\ReCaptcha\Model\Config\Source\Size</source_model>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>
                 </field>  
                 <field id="theme" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Color theme of ReCAPTCHA</label>
                     <source_model>Faonni\ReCaptcha\Model\Config\Source\Theme</source_model>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>
                 </field>                                                
             </group>
