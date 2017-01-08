@@ -23,10 +23,8 @@
 <div class="g-recaptcha" id="faonni-recaptcha"></div>
 <script type="text/javascript">
 	require(
-		['jquery'],
-		function($){
-			grecaptcha.render('faonni-recaptcha', {
-				'sitekey' : ''
-			});
+		['jquery','Faonni_ReCaptcha/js/ReCaptcha'],
+		function($, ReCaptcha){
+			ReCaptcha.init();
 		});
 </script>
