@@ -28,7 +28,6 @@ use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ActionFlag;
 use Magento\Framework\Phrase;
-
 use Faonni\ReCaptcha\Model\Form\FormConfig;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
@@ -115,10 +114,12 @@ class ValidateObserver implements ObserverInterface
 				}
 			}
 			
-			$message = new Phrase('There was an error with the recaptcha code, please try again.');
+			$message = new Phrase('There was an error with the reCAPTCHA code, please try again.');
 			$this->_messageManager->addError($message);
+			
 			/** @var \Magento\Framework\App\Action\Action $controller */
-			$controller = $observer->getEvent()->getControllerAction();				
+			$controller = $observer->getEvent()->getControllerAction();	
+						
 			$this->_actionFlag->set('', \Magento\Framework\App\Action\Action::FLAG_NO_DISPATCH, true);
 			$this->_redirect->redirect($controller->getResponse(), $this->_helper->getRedirectUrl($action));			
 		}
