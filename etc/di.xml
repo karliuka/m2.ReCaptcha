@@ -44,10 +44,10 @@
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
                     <item name="post" xsi:type="string">customer_account_forgotpasswordpost</item>
                 </item>                              
-                <item name="contacts_index_index" xsi:type="array">
+                <item name="contact_index_index" xsi:type="array">
                     <item name="label" xsi:type="string">Contact Us</item>
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
-                    <item name="post" xsi:type="string">contacts_index_post</item>
+                    <item name="post" xsi:type="string">contact_index_post</item>
                 </item>                
             </argument>
         </arguments>

@@ -113,7 +113,7 @@ class ValidateObserver implements ObserverInterface
 					}		
 				}
 			}
-			
+
 			$message = new Phrase('There was an error with the reCAPTCHA code, please try again.');
 			$this->_messageManager->addError($message);
 			
@@ -121,7 +121,8 @@ class ValidateObserver implements ObserverInterface
 			$controller = $observer->getEvent()->getControllerAction();	
 						
 			$this->_actionFlag->set('', \Magento\Framework\App\Action\Action::FLAG_NO_DISPATCH, true);
-			$this->_redirect->redirect($controller->getResponse(), $this->_helper->getRedirectUrl($action));			
+			$this->_redirect->redirect($controller->getResponse(), $this->_helper->getRedirectUrl($action));
+			return $this;			
 		}
     }
     

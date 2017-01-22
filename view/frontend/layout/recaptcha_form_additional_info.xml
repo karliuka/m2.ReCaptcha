@@ -24,7 +24,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-		<referenceContainer name="head.additional" ifconfig="contact/map/enabled">
+		<referenceContainer name="head.additional">
             <block class="Faonni\ReCaptcha\Block\Head" name="faonni.recaptcha.head" template="Faonni_ReCaptcha::head.phtml" />
 		</referenceContainer> 		
         <referenceContainer name="form.additional.info">
