@@ -24,9 +24,7 @@ namespace Faonni\ReCaptcha\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
-use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\ActionFlag;
 use Magento\Framework\Phrase;
 use Faonni\ReCaptcha\Model\Form\FormConfig;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
@@ -66,21 +64,17 @@ class ValidateObserver implements ObserverInterface
     /**
      * @param \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress $remoteAddress 
      * @param \Faonni\ReCaptcha\Helper\Data $helper
-     * @param \Magento\Framework\App\Response\RedirectInterface $redirect
-     * @param \Magento\Framework\App\ActionFlag $actionFlag
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
         RemoteAddress $remoteAddress,
         ReCaptchaHelper $helper,
-		RedirectInterface $redirect,
-		ActionFlag $actionFlag,
 		Context $context     
     ) {
         $this->_remoteAddress = $remoteAddress;
         $this->_helper = $helper;
-		$this->_redirect = $redirect;
-		$this->_actionFlag = $actionFlag;
+		$this->_redirect = $context->getRedirect();
+		$this->_actionFlag = $context->getActionFlag();
 		$this->_messageManager = $context->getMessageManager();        
     }
 
