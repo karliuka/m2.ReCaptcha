@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * Faonni
  *  
@@ -20,13 +19,7 @@
  * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
--->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	<!--
-	event controller_action_predispatch
-	-->	    
-    <event name="controller_action_predispatch">
-        <observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\ValidateObserver" />
-    </event>               
-</config>
+?>
+<?php if ($block->isEnabled()) : ?>
+<script type="text/javascript" src='//www.google.com/recaptcha/api.js?hl=<?php echo $block->getLocale() ?>' async defer></script>
+<?php endif ?>

@@ -33,22 +33,38 @@
                     <item name="label" xsi:type="string">Create user</item>
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
                     <item name="post" xsi:type="string">customer_account_createpost</item>
+					<item name="area" xsi:type="string">frontend</item>
                 </item>  				
                 <item name="customer_account_login" xsi:type="array">
                     <item name="label" xsi:type="string">Login</item>
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
                     <item name="post" xsi:type="string">customer_account_loginpost</item>
+					<item name="area" xsi:type="string">frontend</item>
                 </item>              
                 <item name="customer_account_forgotpassword" xsi:type="array">
                     <item name="label" xsi:type="string">Forgot password</item>
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
                     <item name="post" xsi:type="string">customer_account_forgotpasswordpost</item>
+					<item name="area" xsi:type="string">frontend</item>
                 </item>                              
                 <item name="contact_index_index" xsi:type="array">
                     <item name="label" xsi:type="string">Contact Us</item>
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
                     <item name="post" xsi:type="string">contact_index_post</item>
-                </item>                
+					<item name="area" xsi:type="string">frontend</item>
+                </item>
+                <item name="adminhtml_auth_login" xsi:type="array">
+                    <item name="label" xsi:type="string">Admin Login</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+                    <item name="post" xsi:type="string">adminhtml_index_index</item>
+					<item name="area" xsi:type="string">adminhtml</item>
+                </item>
+                <item name="adminhtml_auth_forgotpassword" xsi:type="array">
+                    <item name="label" xsi:type="string">Admin Forgot Password</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+                    <item name="post" xsi:type="string">adminhtml_index_index</item>
+					<item name="area" xsi:type="string">adminhtml</item>
+                </item> 				
             </argument>
         </arguments>
     </type>	

@@ -21,12 +21,14 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	<!--
-	event controller_action_predispatch
-	-->	    
-    <event name="controller_action_predispatch">
-        <observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\ValidateObserver" />
-    </event>               
-</config>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="head.components">
+            <block class="Faonni\ReCaptcha\Block\Head" name="faonni.recaptcha.head" template="Faonni_ReCaptcha::head.phtml" />
+		</referenceContainer> 		
+        <referenceContainer name="form.additional.info">
+            <block class="Faonni\ReCaptcha\Block\Form" name="faonni.recaptcha.form" after="-" template="Faonni_ReCaptcha::form.phtml"/>  
+        </referenceContainer>
+    </body>
+</page> 
