@@ -23,11 +23,11 @@ namespace Faonni\ReCaptcha\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Phrase;
 use Faonni\ReCaptcha\Model\Form\FormConfig;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
+use Faonni\ReCaptcha\Model\Provider;
 
 /**
  * ReCaptcha Validate observer
@@ -42,9 +42,11 @@ class ValidateObserver implements ObserverInterface
     protected $_helper; 
     
     /**
-     * @var \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress
-     */    
-    protected $_remoteAddress;
+     * Provider instance
+     * 
+     * @var \Faonni\ReCaptcha\Model\Provider
+     */
+    protected $_provider;	     
     
 	/**
 	 * @var \Magento\Framework\App\Response\RedirectInterface
@@ -59,23 +61,23 @@ class ValidateObserver implements ObserverInterface
     /**
      * @var \Magento\Message\ManagerInterface
      */
-    protected $_messageManager;	   
+    protected $_messageManager;	       
         
     /**
-     * @param \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress $remoteAddress 
-     * @param \Faonni\ReCaptcha\Helper\Data $helper
-     * @param \Magento\Framework\App\Action\Context $context
+     * @param Data $helper
+     * @param Context $context
+     * @param Provider $provider
      */
     public function __construct(
-        RemoteAddress $remoteAddress,
         ReCaptchaHelper $helper,
-		Context $context     
+		Context $context,
+		Provider $provider         
     ) {
-        $this->_remoteAddress = $remoteAddress;
         $this->_helper = $helper;
 		$this->_redirect = $context->getRedirect();
 		$this->_actionFlag = $context->getActionFlag();
-		$this->_messageManager = $context->getMessageManager();        
+		$this->_messageManager = $context->getMessageManager();
+		$this->_provider = $provider;
     }
 
     /**
@@ -90,22 +92,12 @@ class ValidateObserver implements ObserverInterface
 		$action = strtolower($request->getFullActionName());
 		
 		if ($this->_helper->isPostAllowed($action)) {
-			$captcha = $request->getPost('g-recaptcha-response');
-			if (!empty($captcha)){
-				$client = $this->getClient('https://www.google.com/recaptcha/api/siteverify');
-				$client->setParameterPost(array(
-					'secret'   => $this->_helper->getSecretKey(),
-					'response' => $captcha,
-					'remoteip' => $this->_remoteAddress->getRemoteAddress(),
-				));
-				
-				$response = $client->request(\Zend_Http_Client::POST);
-				if($response->isSuccessful()){
-					$json = json_decode($response->getBody());
-					if(!empty($json->success) && true == $json->success){
-						return $this;
-					}		
-				}
+			$recaptcha = $request->getPost('g-recaptcha-response');
+			if (!empty($recaptcha)){
+				return $this->_provider->validate(
+					$recaptcha, 
+					$this->_helper->getSecretKey()
+				);
 			}
 
 			$message = new Phrase('There was an error with the reCAPTCHA code, please try again.');
@@ -118,19 +110,5 @@ class ValidateObserver implements ObserverInterface
 			$this->_redirect->redirect($controller->getResponse(), $this->_helper->getRedirectUrl($action));
 			return $this;			
 		}
-    }
-    
-    /**
-     * Returns the Zend Http Client
-	 *
-     * @param string $url	 
-     * @return Zend_Http_Client
-     */
-    public function getClient($url) 
-	{
-		return new \Zend_Http_Client($url, array(
-			'adapter'     => 'Zend_Http_Client_Adapter_Curl',
-			'curloptions' => array(CURLOPT_SSL_VERIFYPEER => false),
-		));
-    }	    
+    }    
 }  
