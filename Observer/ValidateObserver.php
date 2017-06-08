@@ -64,6 +64,8 @@ class ValidateObserver implements ObserverInterface
     protected $_messageManager;	       
         
     /**
+     * Initialize observer
+     * 
      * @param Data $helper
      * @param Context $context
      * @param Provider $provider
@@ -93,11 +95,9 @@ class ValidateObserver implements ObserverInterface
 		
 		if ($this->_helper->isPostAllowed($action)) {
 			$recaptcha = $request->getPost('g-recaptcha-response');
-			if (!empty($recaptcha)){
-				return $this->_provider->validate(
-					$recaptcha, 
-					$this->_helper->getSecretKey()
-				);
+			if (!empty($recaptcha) && 
+				$this->_provider->validate($recaptcha, $this->_helper->getSecretKey())) {
+				return $this;
 			}
 
 			$message = new Phrase('There was an error with the reCAPTCHA code, please try again.');
