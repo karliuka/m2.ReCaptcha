@@ -24,6 +24,7 @@ namespace Faonni\ReCaptcha\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\Phrase;
 use Faonni\ReCaptcha\Model\Form\FormConfig;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
@@ -97,18 +98,31 @@ class ValidateObserver implements ObserverInterface
 			$recaptcha = $request->getPost('g-recaptcha-response');
 			if (!empty($recaptcha) && 
 				$this->_provider->validate($recaptcha, $this->_helper->getSecretKey())) {
-				return $this;
-			}
-
-			$message = new Phrase('There was an error with the reCAPTCHA code, please try again.');
-			$this->_messageManager->addError($message);
-			
-			/** @var \Magento\Framework\App\Action\Action $controller */
-			$controller = $observer->getEvent()->getControllerAction();	
-						
-			$this->_actionFlag->set('', \Magento\Framework\App\Action\Action::FLAG_NO_DISPATCH, true);
-			$this->_redirect->redirect($controller->getResponse(), $this->_helper->getRedirectUrl($action));
-			return $this;			
+				return;
+			}						
+			$this->redirect(
+				$observer->getEvent()->getControllerAction(), 
+				$action
+			);		
 		}
-    }    
+    } 
+    
+    /**
+     * Redirect to action
+     *
+     * @param Action $controller
+     * @param string $action
+     * @return void
+     */
+    public function redirect($controller, $action)
+    {
+		$this->_messageManager->addError(
+			new Phrase('There was an error with the reCAPTCHA code, please try again.')
+		);					
+		$this->_actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
+		$this->_redirect->redirect(
+			$controller->getResponse(), 
+			$this->_helper->getRedirectUrl($action)
+		);
+    }        
 }  
