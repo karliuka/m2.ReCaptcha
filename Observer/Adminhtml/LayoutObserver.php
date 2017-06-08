@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * Faonni
  *  
@@ -20,13 +19,26 @@
  * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
--->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	<!--
-	event layout_load_before
-	-->	     
-	<event name="layout_load_before">
-			<observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\LayoutObserver" />
-	</event>                
-</config>
+namespace Faonni\ReCaptcha\Observer\Adminhtml;
+
+use Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig;
+use Faonni\ReCaptcha\Helper\Adminhtml\Data as ReCaptchaHelper;
+use Faonni\ReCaptcha\Observer\LayoutObserver as AbstractLayoutObserver;
+
+/**
+ * ReCaptcha Layout observer
+ */
+class LayoutObserver extends AbstractLayoutObserver
+{
+    /**
+     * @param FormConfig $config
+     * @param Data $helper
+     */
+    public function __construct(
+        FormConfig $config,
+        ReCaptchaHelper $helper
+    ) {
+        $this->_config = $config;
+        $this->_helper = $helper;
+    }
+}  

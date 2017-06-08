@@ -25,10 +25,10 @@
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
 		<referenceContainer name="head.components">
-            <block class="Faonni\ReCaptcha\Block\Head" name="faonni.recaptcha.head" template="Faonni_ReCaptcha::head.phtml" />
+            <block class="Faonni\ReCaptcha\Block\Adminhtml\Head" name="faonni.recaptcha.head" template="Faonni_ReCaptcha::head.phtml" />
 		</referenceContainer> 		
         <referenceContainer name="form.additional.info">
-            <block class="Faonni\ReCaptcha\Block\Form" name="faonni.recaptcha.form" after="-" template="Faonni_ReCaptcha::form.phtml"/>  
+            <block class="Faonni\ReCaptcha\Block\Adminhtml\Form" name="faonni.recaptcha.form" after="-" template="Faonni_ReCaptcha::form.phtml"/>  
         </referenceContainer>
     </body>
 </page> 

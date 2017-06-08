@@ -31,7 +31,7 @@ class FormConfig
      * 
      * @var array
      */
-    private $_config;
+    protected $_config;
     
     /**
      * Validate format of forms configuration array
@@ -44,7 +44,7 @@ class FormConfig
         foreach ($config as $formName => $formInfo) {
             if (!is_string($formName) || empty($formName)) {
                 throw new \InvalidArgumentException('Name for a ReCaptcha form has to be specified.');
-            }
+            }           
             if (empty($formInfo['handle'])) {
                 throw new \InvalidArgumentException('Handle for a ReCaptcha form has to be specified.');
             }

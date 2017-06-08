@@ -35,5 +35,16 @@
 				<theme>light</theme>
             </recaptcha>
         </customer>
+        <admin>
+            <recaptcha>
+				<enable>0</enable>
+                <site_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <secret_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />								
+				<forms>adminhtml_auth_login,adminhtml_auth_forgotpassword</forms>
+				<type>image</type>
+				<size>normal</size>
+				<theme>light</theme>
+            </recaptcha>
+        </admin>        
     </default>
 </config>

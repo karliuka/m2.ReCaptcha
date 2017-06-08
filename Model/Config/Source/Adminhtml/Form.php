@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * Faonni
  *  
@@ -20,13 +19,23 @@
  * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
--->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	<!--
-	event layout_load_before
-	-->	     
-	<event name="layout_load_before">
-		<observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\Adminhtml\LayoutObserver" />
-	</event>                    
-</config>
+namespace Faonni\ReCaptcha\Model\Config\Source\Adminhtml;
+
+use Magento\Framework\Option\ArrayInterface;
+use Faonni\ReCaptcha\Model\Config\Source\Form as AbstractForm;
+use Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig;
+
+/**
+ * Source of option values in a form of value-label pairs
+ */
+class Form extends AbstractForm
+{
+    /**
+     * @param FormConfig $config
+     */
+    public function __construct(
+        FormConfig $config
+    ) {
+        $this->_config = $config;
+    }
+}  

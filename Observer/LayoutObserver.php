@@ -64,7 +64,6 @@ class LayoutObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
 		$name = $observer->getEvent()->getFullActionName();
-		
 		if ($this->_helper->isFormAllowed($name)) {
 			$handle = $this->_config->getFormHandle($name);		
 			if ($handle) {
