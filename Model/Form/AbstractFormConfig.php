@@ -19,7 +19,7 @@
  * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-namespace Faonni\ReCaptcha\Model\Form\FormConfig;
+namespace Faonni\ReCaptcha\Model\Form;
 
 /**
  * Faonni ReCaptcha abstract form config 

@@ -36,6 +36,8 @@ class Provider
     protected $_url = 'https://www.google.com/recaptcha/api/siteverify';
     
     /**
+     * RemoteAddress instance
+     * 	
      * @var \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress
      */    
     protected $_remoteAddress;
@@ -43,7 +45,7 @@ class Provider
     /**
      * Initialize model
      * 
-     * @param \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress $remoteAddress 
+     * @param RemoteAddress $remoteAddress 
      */
     public function __construct(
         RemoteAddress $remoteAddress   

@@ -30,7 +30,7 @@ use Faonni\ReCaptcha\Helper\Adminhtml\Data as ReCaptchaHelper;
 use Faonni\ReCaptcha\Model\Provider;
 
 /**
- * ReCaptcha Validate observer
+ * ReCaptcha ValidateLogin observer
  */
 class ValidateLoginObserver implements ObserverInterface
 {
@@ -51,7 +51,7 @@ class ValidateLoginObserver implements ObserverInterface
     /**
      * Request instance
      * 
-     * @var \Faonni\ReCaptcha\Model\Provider
+     * @var \Magento\Framework\App\Request\Http
      */    
     protected $_request;
     

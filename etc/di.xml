@@ -26,7 +26,7 @@
 	<!--
 	ReCaptcha form config
 	-->	
-    <type name="Faonni\ReCaptcha\Model\Form\FormConfig">		
+    <virtualType name="Faonni\ReCaptcha\Model\Form\FormConfig" type="Faonni\ReCaptcha\Model\Form\AbstractFormConfig">
         <arguments>
             <argument name="config" xsi:type="array">
                 <item name="customer_account_create" xsi:type="array">
@@ -51,11 +51,11 @@
                 </item>			
             </argument>
         </arguments>
-    </type>
+    </virtualType>	
  	<!--
 	ReCaptcha adminhtml form config
 	-->	
-    <type name="Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig">
+    <virtualType name="Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig" type="Faonni\ReCaptcha\Model\Form\AbstractFormConfig">
         <arguments>
             <argument name="config" xsi:type="array">
                 <item name="adminhtml_auth_login" xsi:type="array">
@@ -69,7 +69,7 @@
                 </item> 				
             </argument>
         </arguments>
-    </type>
+    </virtualType>		
  	<!--
 	configuration helpers
 	-->	

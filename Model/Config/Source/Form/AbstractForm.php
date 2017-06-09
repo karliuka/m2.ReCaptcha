@@ -22,7 +22,7 @@
 namespace Faonni\ReCaptcha\Model\Config\Source\Form;
 
 use Magento\Framework\Option\ArrayInterface;
-use Faonni\ReCaptcha\Model\Form\FormConfig\AbstractFormConfig;
+use Faonni\ReCaptcha\Model\Form\AbstractFormConfig;
 
 /**
  * Source of option values in a form of value-label pairs
@@ -30,6 +30,8 @@ use Faonni\ReCaptcha\Model\Form\FormConfig\AbstractFormConfig;
 class AbstractForm implements ArrayInterface
 {
     /**
+     * FormConfig instance
+     *		
      * @var \Faonni\ReCaptcha\Model\Form\FormConfig
      */
     protected $_config;
@@ -42,6 +44,8 @@ class AbstractForm implements ArrayInterface
     protected $_options;
     
     /**
+     * Initialize source
+     * 	
      * @param AbstractFormConfig $config
      */
     public function __construct(

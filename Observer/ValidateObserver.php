@@ -49,16 +49,22 @@ class ValidateObserver implements ObserverInterface
     protected $_provider;	     
     
 	/**
+     * Response Redirect instance
+     * 	
 	 * @var \Magento\Framework\App\Response\RedirectInterface
 	 */
 	protected $_redirect;
 
 	/**
+     * ActionFlag instance
+     * 		
 	 * @var \Magento\Framework\App\ActionFlag
 	 */
 	protected $_actionFlag; 
 	
     /**
+     * Message Manager instance
+     * 	
      * @var \Magento\Message\ManagerInterface
      */
     protected $_messageManager;	       
