@@ -26,7 +26,7 @@
 	<!--
 	ReCaptcha form config
 	-->	
-    <type name="Faonni\ReCaptcha\Model\Form\FormConfig">		
+    <virtualType name="Faonni\ReCaptcha\Model\Form\FormConfig" type="Faonni\ReCaptcha\Model\Form\AbstractFormConfig">
         <arguments>
             <argument name="config" xsi:type="array">
                 <item name="customer_account_create" xsi:type="array">
@@ -48,8 +48,84 @@
                     <item name="label" xsi:type="string">Contact Us</item>
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
                     <item name="post" xsi:type="string">contact_index_post</item>
-                </item>                
+                </item>			
             </argument>
         </arguments>
+    </virtualType>	
+ 	<!--
+	ReCaptcha adminhtml form config
+	-->	
+    <virtualType name="Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig" type="Faonni\ReCaptcha\Model\Form\AbstractFormConfig">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="adminhtml_auth_login" xsi:type="array">
+                    <item name="label" xsi:type="string">Admin Login</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+                </item>
+                <item name="adminhtml_auth_forgotpassword" xsi:type="array">
+                    <item name="label" xsi:type="string">Admin Forgot Password</item>
+                    <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+					<item name="post" xsi:type="string">adminhtml_auth_forgotpassword</item>
+                </item> 				
+            </argument>
+        </arguments>
+    </virtualType>		
+ 	<!--
+	configuration helpers
+	-->	
+    <type name="Faonni\ReCaptcha\Helper\Data">
+        <arguments>
+            <argument name="formConfig" xsi:type="object">Faonni\ReCaptcha\Model\Form\FormConfig</argument>
+        </arguments>
     </type>	
+    <type name="Faonni\ReCaptcha\Helper\Adminhtml\Data">
+        <arguments>
+            <argument name="formConfig" xsi:type="object">Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig</argument>
+        </arguments>
+    </type>
+ 	<!--
+	configuration observers
+	-->		
+    <type name="Faonni\ReCaptcha\Observer\LayoutObserver">
+        <arguments>
+            <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\FormConfig</argument>
+        </arguments>
+    </type>	
+    <virtualType name="Faonni\ReCaptcha\Observer\Adminhtml\LayoutObserver" type="Faonni\ReCaptcha\Observer\LayoutObserver">
+        <arguments>
+            <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig</argument>
+			<argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Faonni\ReCaptcha\Observer\Adminhtml\ValidateObserver" type="Faonni\ReCaptcha\Observer\ValidateObserver">
+        <arguments>
+			<argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
+        </arguments>
+    </virtualType>		
+ 	<!--
+	configuration blocks
+	-->	
+    <virtualType name="Faonni\ReCaptcha\Block\Adminhtml\Form" type="Faonni\ReCaptcha\Block\Form">
+        <arguments>
+            <argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
+        </arguments>
+    </virtualType>	
+    <virtualType name="Faonni\ReCaptcha\Block\Adminhtml\Head" type="Faonni\ReCaptcha\Block\Head">
+        <arguments>
+            <argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
+        </arguments>
+    </virtualType>
+ 	<!--
+	configuration sources
+	-->		
+    <virtualType name="Faonni\ReCaptcha\Model\Config\Source\Form" type="Faonni\ReCaptcha\Model\Config\Source\Form\AbstractForm">
+        <arguments>
+            <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\FormConfig</argument>
+        </arguments>
+    </virtualType>	
+    <virtualType name="Faonni\ReCaptcha\Model\Config\Source\Adminhtml\Form" type="Faonni\ReCaptcha\Model\Config\Source\Form\AbstractForm">
+        <arguments>
+            <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig</argument>
+        </arguments>
+    </virtualType>	
 </config> 

@@ -23,7 +23,7 @@ namespace Faonni\ReCaptcha\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Faonni\ReCaptcha\Model\Form\FormConfig;
+use Faonni\ReCaptcha\Model\Form\AbstractFormConfig;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
@@ -32,7 +32,9 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 class LayoutObserver implements ObserverInterface
 {
     /**
-     * @var \Faonni\ReCaptcha\Model\Form\FormConfig
+     * FormConfig instance
+     *	
+     * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
      */
     protected $_config;
     
@@ -44,11 +46,13 @@ class LayoutObserver implements ObserverInterface
     protected $_helper;  
         
     /**
-     * @param \Faonni\ReCaptcha\Model\Form\FormConfig $config
-     * @param \Faonni\ReCaptcha\Helper\Data $helper
+     * Initialize observer
+     * 	
+     * @param AbstractFormConfig $config
+     * @param Data $helper
      */
     public function __construct(
-        FormConfig $config,
+        AbstractFormConfig $config,
         ReCaptchaHelper $helper
     ) {
         $this->_config = $config;
@@ -64,7 +68,6 @@ class LayoutObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
 		$name = $observer->getEvent()->getFullActionName();
-		
 		if ($this->_helper->isFormAllowed($name)) {
 			$handle = $this->_config->getFormHandle($name);		
 			if ($handle) {

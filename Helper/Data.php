@@ -24,7 +24,7 @@ namespace Faonni\ReCaptcha\Helper;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
-use Faonni\ReCaptcha\Model\Form\FormConfig;
+use Faonni\ReCaptcha\Model\Form\AbstractFormConfig;
 
 /**
  * Faonni ReCaptcha Data helper
@@ -81,20 +81,26 @@ class Data extends AbstractHelper
     protected $_posts = [];
     
     /**
-     * @var \Faonni\ReCaptcha\Model\Form\FormConfig
+     * FormConfig instance
+     *		
+     * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
      */
     protected $_formConfig;    
     
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Faonni\ReCaptcha\Model\Form\FormConfig $formConfig
+     * Initialize helper
+     * 
+     * @param Context $context
+     * @param AbstractFormConfig $formConfig
      */
     public function __construct(
         Context $context,
-        FormConfig $formConfig
-    ) {
-        $this->_formConfig = $formConfig;       
-        parent::__construct($context);        
+        AbstractFormConfig $formConfig
+    ) {         
+        parent::__construct(
+			$context
+		);		
+		$this->_formConfig = $formConfig; 
         $this->_init();
     }
     
@@ -110,7 +116,7 @@ class Data extends AbstractHelper
 			if (false === in_array($name, $forms)) continue;
 			$this->_form[$name] = true;
 			$this->_posts[$this->_formConfig->getFormPost($name)] = true;
-		}        
+		}      
         return $this;
     }
                 
@@ -121,7 +127,7 @@ class Data extends AbstractHelper
      */
     public function isEnabled()
     {
-        return $this->isModuleOutputEnabled() && $this->_getConfig(self::XML_ENABLED);
+        return $this->isModuleOutputEnabled() && $this->_getConfig($this::XML_ENABLED);
     } 
     
     /**
@@ -131,7 +137,7 @@ class Data extends AbstractHelper
      */
     public function getSiteKey()
     {
-        return $this->_getConfig(self::XML_SITE_KEY);
+        return $this->_getConfig($this::XML_SITE_KEY);
     } 
     
     /**
@@ -141,7 +147,7 @@ class Data extends AbstractHelper
      */
     public function getSecretKey()
     {
-        return $this->_getConfig(self::XML_SECRET_KEY);
+        return $this->_getConfig($this::XML_SECRET_KEY);
     } 
     
     /**
@@ -151,7 +157,7 @@ class Data extends AbstractHelper
      */
     public function getForms()
     {
-        return $this->_getConfig(self::XML_FORMS);
+        return $this->_getConfig($this::XML_FORMS);
     } 
         
     /**
@@ -161,7 +167,7 @@ class Data extends AbstractHelper
      */
     public function getType()
     {
-        return $this->_getConfig(self::XML_TYPE);
+        return $this->_getConfig($this::XML_TYPE);
     } 
     
     /**
@@ -171,7 +177,7 @@ class Data extends AbstractHelper
      */
     public function getSize()
     {
-        return $this->_getConfig(self::XML_SIZE);
+        return $this->_getConfig($this::XML_SIZE);
     } 
     
     /**
@@ -181,7 +187,7 @@ class Data extends AbstractHelper
      */
     public function getTheme()
     {
-        return $this->_getConfig(self::XML_THEME);
+        return $this->_getConfig($this::XML_THEME);
     } 
     
     /**

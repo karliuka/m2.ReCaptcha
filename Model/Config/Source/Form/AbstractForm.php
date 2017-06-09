@@ -19,17 +19,19 @@
  * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-namespace Faonni\ReCaptcha\Model\Config\Source;
+namespace Faonni\ReCaptcha\Model\Config\Source\Form;
 
 use Magento\Framework\Option\ArrayInterface;
-use Faonni\ReCaptcha\Model\Form\FormConfig;
+use Faonni\ReCaptcha\Model\Form\AbstractFormConfig;
 
 /**
  * Source of option values in a form of value-label pairs
  */
-class Form implements ArrayInterface
+class AbstractForm implements ArrayInterface
 {
     /**
+     * FormConfig instance
+     *		
      * @var \Faonni\ReCaptcha\Model\Form\FormConfig
      */
     protected $_config;
@@ -42,10 +44,12 @@ class Form implements ArrayInterface
     protected $_options;
     
     /**
-     * @param \Faonni\ReCaptcha\Model\Form\FormConfig $config
+     * Initialize source
+     * 	
+     * @param AbstractFormConfig $config
      */
     public function __construct(
-        FormConfig $config
+        AbstractFormConfig $config
     ) {
         $this->_config = $config;
     }
