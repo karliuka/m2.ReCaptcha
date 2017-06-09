@@ -93,7 +93,7 @@ class ValidateObserver implements ObserverInterface
 		$request = $observer->getEvent()->getRequest();	
 		$action = strtolower($request->getFullActionName());
 		
-		if ($this->_helper->isPostAllowed($action)) {
+		if ($request->isPost() && $this->_helper->isPostAllowed($action)) {
 			$recaptcha = $request->getPost('g-recaptcha-response');
 			if (!empty($recaptcha) && 
 				$this->_provider->validate($recaptcha, $this->_helper->getSecretKey())) {

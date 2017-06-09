@@ -65,6 +65,7 @@
                 <item name="adminhtml_auth_forgotpassword" xsi:type="array">
                     <item name="label" xsi:type="string">Admin Forgot Password</item>
                     <item name="handle" xsi:type="string">recaptcha_form_additional_info</item>
+					<item name="post" xsi:type="string">adminhtml_auth_forgotpassword</item>
                 </item> 				
             </argument>
         </arguments>
@@ -95,7 +96,12 @@
             <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig</argument>
 			<argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
         </arguments>
-    </virtualType>	
+    </virtualType>
+    <virtualType name="Faonni\ReCaptcha\Observer\Adminhtml\ValidateObserver" type="Faonni\ReCaptcha\Observer\ValidateObserver">
+        <arguments>
+			<argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
+        </arguments>
+    </virtualType>		
  	<!--
 	configuration blocks
 	-->	
