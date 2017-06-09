@@ -38,11 +38,11 @@ class Form extends Template
     protected $_helper;  
     
     /**
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Faonni\ReCaptcha\Helper\Data $helper
+     * Initialize block
+     * 	
+     * @param Context $context
+     * @param Data $helper
      * @param array $data
-     * 
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
 		Context $context, 
@@ -50,7 +50,11 @@ class Form extends Template
 		array $data = []
 	) {
         $this->_helper = $helper;
-        parent::__construct($context, $data);
+		
+        parent::__construct(
+			$context, 
+			$data
+		);
     }
     
     /**

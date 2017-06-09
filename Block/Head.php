@@ -46,12 +46,12 @@ class Head extends Template
     protected $_resolver;    
     
     /**
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Faonni\ReCaptcha\Helper\Data $helper
-     * @param \Magento\Framework\Locale\ResolverInterface $resolver
+     * Initialize block
+     * 	
+     * @param Context $context
+     * @param Data $helper
+     * @param ResolverInterface $resolver
      * @param array $data
-     * 
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
 		Context $context, 
@@ -61,7 +61,11 @@ class Head extends Template
 	) {
         $this->_helper = $helper;
         $this->_resolver = $resolver;
-        parent::__construct($context, $data);
+		
+        parent::__construct(
+			$context, 
+			$data
+		);
     }
     
     /**

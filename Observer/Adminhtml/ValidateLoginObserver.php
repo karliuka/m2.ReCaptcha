@@ -26,7 +26,6 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\App\Request\Http as Request;
 use Magento\Framework\Exception\Plugin\AuthenticationException as PluginAuthenticationException;
 use Magento\Framework\Phrase;
-use Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig;
 use Faonni\ReCaptcha\Helper\Adminhtml\Data as ReCaptchaHelper;
 use Faonni\ReCaptcha\Model\Provider;
 

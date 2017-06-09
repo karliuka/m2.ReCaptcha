@@ -24,7 +24,7 @@ namespace Faonni\ReCaptcha\Helper;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
-use Faonni\ReCaptcha\Model\Form\FormConfig;
+use Faonni\ReCaptcha\Model\Form\FormConfig\AbstractFormConfig;
 
 /**
  * Faonni ReCaptcha Data helper
@@ -81,7 +81,7 @@ class Data extends AbstractHelper
     protected $_posts = [];
     
     /**
-     * @var \Faonni\ReCaptcha\Model\Form\FormConfig
+     * @var \Faonni\ReCaptcha\Model\Form\FormConfig\AbstractFormConfig
      */
     protected $_formConfig;    
     
@@ -89,17 +89,17 @@ class Data extends AbstractHelper
      * Initialize helper
      * 
      * @param Context $context
-     * @param FormConfig $formConfig
+     * @param AbstractFormConfig $formConfig
      */
     public function __construct(
         Context $context,
-        FormConfig $formConfig
-    ) {
-        $this->_formConfig = $formConfig; 
-              
+        AbstractFormConfig $formConfig
+    ) {         
         parent::__construct(
 			$context
-		);		       
+		);
+		
+		$this->_formConfig = $formConfig; 
         $this->_init();
     }
     

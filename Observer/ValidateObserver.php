@@ -26,7 +26,6 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\Phrase;
-use Faonni\ReCaptcha\Model\Form\FormConfig;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 use Faonni\ReCaptcha\Model\Provider;
 

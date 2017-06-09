@@ -21,32 +21,11 @@
  */
 namespace Faonni\ReCaptcha\Model\Form\Adminhtml;
 
-use Faonni\ReCaptcha\Model\Form\FormConfig as AbstractForm;
+use Faonni\ReCaptcha\Model\Form\FormConfig\AbstractFormConfig;
 
 /**
- * Faonni ReCaptcha form config 
+ * Faonni ReCaptcha adminhtml form config 
  */
-class FormConfig extends AbstractForm
+class FormConfig extends AbstractFormConfig
 {
-    /**
-     * Validate format of forms configuration array
-     *
-     * @param array $config
-     * @throws \InvalidArgumentException
-     */
-    public function __construct(array $config)
-    {
-        foreach ($config as $formName => $formInfo) {
-            if (!is_string($formName) || empty($formName)) {
-                throw new \InvalidArgumentException('Name for a ReCaptcha form has to be specified.');
-            }            
-            if (empty($formInfo['handle'])) {
-                throw new \InvalidArgumentException('Handle for a ReCaptcha form has to be specified.');
-            }
-            if (empty($formInfo['label'])) {
-                throw new \InvalidArgumentException('Label for a ReCaptcha form has to be specified.');
-            }          
-        }
-        $this->_config = $config;
-    }
 } 

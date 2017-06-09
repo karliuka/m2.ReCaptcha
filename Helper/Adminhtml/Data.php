@@ -21,12 +21,10 @@
  */
 namespace Faonni\ReCaptcha\Helper\Adminhtml;
 
-use Magento\Framework\App\Helper\Context;
 use Faonni\ReCaptcha\Helper\Data as AbstractHelper;
-use Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig;
 
 /**
- * Faonni ReCaptcha Data helper
+ * Faonni ReCaptcha Adminhtml Data helper
  */
 class Data extends AbstractHelper
 {
@@ -63,21 +61,5 @@ class Data extends AbstractHelper
     /**
      * Color theme of ReCAPTCHA config path
      */
-    const XML_THEME = 'admin/recaptcha/theme';  
-    
-    /**
-     * Initialize helper
-     * 
-     * @param Context $context
-     * @param FormConfig $formConfig
-     */
-    public function __construct(
-        Context $context,
-        FormConfig $formConfig
-    ) {        
-        parent::__construct(
-			$context,
-			$formConfig
-		); 
-    }  
+    const XML_THEME = 'admin/recaptcha/theme';   
 }
