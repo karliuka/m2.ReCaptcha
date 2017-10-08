@@ -1,4 +1,8 @@
 # Magento2 ReCaptcha
+
+[![Total Downloads](https://poser.pugx.org/faonni/module-re-captcha/downloads)](https://packagist.org/packages/faonni/module-re-captcha)
+[![Latest Stable Version](https://poser.pugx.org/faonni/module-re-captcha/v/stable)](https://packagist.org/packages/faonni/module-re-captcha)
+
 Extension is integrate Google Recaptcha with your Magento2 store.
 
 ### Forgot Your Password page
@@ -20,5 +24,6 @@ Extension is integrate Google Recaptcha with your Magento2 store.
 
     ```bash
 	php bin/magento setup:upgrade
-	php bin/magento setup:static-content:deploy
+	php bin/magento setup:di:compile
+	php bin/magento setup:static-content:deploy  (optional)
 
