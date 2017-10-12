@@ -65,7 +65,8 @@ class ValidateLoginObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-		if ($this->_helper->isEnabled()) {
+		if ($this->_helper->isEnabled() && 
+            $this->_helper->isFormAllowed('adminhtml_auth_login')) {
 			$recaptcha = $this->_request->getPost('g-recaptcha-response');
 			if (!empty($recaptcha) && 
 				$this->_provider->validate($recaptcha, $this->_helper->getSecretKey())) {
