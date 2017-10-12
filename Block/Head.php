@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2017 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Block;
@@ -21,38 +21,38 @@ class Head extends Template
      *
      * @var \Faonni\ReCaptcha\Helper\Data
      */
-    protected $_helper; 
-    
+    protected $_helper;
+
     /**
-     * Resolver instance 
-     * 
+     * Resolver instance
+     *
      * @var Magento\Framework\Locale\ResolverInterface
      */
-    protected $_resolver;    
-    
+    protected $_resolver;
+
     /**
      * Initialize block
-     * 	
+     *
      * @param Context $context
      * @param Data $helper
      * @param ResolverInterface $resolver
      * @param array $data
      */
     public function __construct(
-		Context $context, 
+		Context $context,
 		ReCaptchaHelper $helper,
 		ResolverInterface $resolver,
 		array $data = []
 	) {
         $this->_helper = $helper;
         $this->_resolver = $resolver;
-		
+
         parent::__construct(
-			$context, 
+			$context,
 			$data
 		);
     }
-    
+
     /**
      * Check ReCaptcha functionality should be enabled
      *
@@ -61,8 +61,18 @@ class Head extends Template
     public function isEnabled()
     {
         return $this->_helper->isEnabled();
-    } 
-    
+    }
+
+    /**
+     * Retrieve Site Key
+     *
+     * @return  string|null
+     */
+    public function getSiteKey()
+    {
+        return $this->_helper->getSiteKey();
+    }
+
     /**
      * Return locale code
      *
@@ -71,5 +81,5 @@ class Head extends Template
     public function getLocale()
     {
         return $this->_resolver->getLocale();
-    }    
-} 
+    }
+}
