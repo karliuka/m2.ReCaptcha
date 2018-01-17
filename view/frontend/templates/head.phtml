@@ -6,14 +6,5 @@
  */
 ?>
 <?php if ($block->isEnabled()) : ?>
-<script type="text/javascript" src='//www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit&hl=<?php echo $block->getLocale() ?>' async defer></script>
-<script type="text/javascript">
-       var CaptchaCallback = function () {
-           require(['jquery'], function ($) {
-               $('.g-recaptcha').each(function (index, el) {
-                   grecaptcha.render(el, {'sitekey': '<?php echo $block->getSiteKey() ?>'});
-               });
-           })
-       };
-</script>
+<script type="text/javascript" src='//www.google.com/recaptcha/api.js?render=explicit&hl=<?php echo $block->getLocale() ?>' async defer></script>
 <?php endif ?>

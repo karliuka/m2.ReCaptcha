@@ -6,4 +6,7 @@
  */
 -->
 <!-- ko if: isEnabled() -->
+<div data-bind="mageInit: {'faonni/recaptcha': getConfig()}">
+	<div class="g-recaptcha"></div>
+</div>
 <!-- /ko -->

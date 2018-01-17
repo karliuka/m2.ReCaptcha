@@ -8,7 +8,7 @@ define([
     'uiComponent',
 	'ko'
 ],
-function ($, Component) {
+function ($, Component, ko) {
     'use strict';
 	
     return Component.extend({
@@ -21,14 +21,26 @@ function ($, Component) {
         },
 		
         /**
+         * Config Option
+         * @var {Object}
+         */		
+		config: {
+			enabled: false,
+			type: 'image',
+			size: 'normal',
+			theme: 'light',
+			sitekey: null
+		},
+		
+        /**
          * initialize Component
          * @return {Void}
          */	
         initialize: function () {
             this._super();
             if (window[this.configSource] && window[this.configSource].recaptcha) {
-                var config = window[this.configSource].recaptcha;
-            }			
+                $.extend(this.config, window[this.configSource].recaptcha);
+            }
         },
 		
         /**
@@ -36,7 +48,15 @@ function ($, Component) {
          * @return {Boolean}
          */
         isEnabled: function () {
-            return true;
-        }
+            return this.config.enabled;
+        },
+		
+        /**
+         * Retrieve Config
+         * @return {Object}
+         */
+        getConfig: function () {
+            return this.config;
+        }	
     });
 });
