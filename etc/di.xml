@@ -112,5 +112,11 @@
         <arguments>
             <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig</argument>
         </arguments>
-    </virtualType>	
+    </virtualType>
+ 	<!--
+	plugin
+	-->		
+    <type name="Magento\Checkout\Block\Cart\Sidebar">
+        <plugin name="faonni_recaptcha" type="Faonni\ReCaptcha\Plugin\Checkout\Block\Cart\SidebarPlugin" sortOrder="52" />
+    </type>		
 </config> 
