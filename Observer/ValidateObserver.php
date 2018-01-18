@@ -196,7 +196,11 @@ class ValidateObserver implements ObserverInterface
      */
     protected function _representJson(Action $controller)
     {
-		$json = $this->_jsonHelper->jsonEncode(['error' => 1, 'message' => __('Incorrect reCAPTCHA')]);
+		$json = $this->_jsonHelper->jsonEncode([
+			'error' => 1, // compatibility with checkout as guest js
+			'errors' => true, // compatibility with checkout login js
+			'message' => __('Incorrect reCAPTCHA')
+		]);
 		$controller->getResponse()->representJson($json);
     }      
 }  
