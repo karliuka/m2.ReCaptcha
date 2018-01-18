@@ -118,5 +118,8 @@
 	-->		
     <type name="Magento\Checkout\Block\Cart\Sidebar">
         <plugin name="faonni_recaptcha" type="Faonni\ReCaptcha\Plugin\Checkout\Block\Cart\SidebarPlugin" sortOrder="52" />
-    </type>		
+    </type>	
+    <type name="Magento\Customer\Controller\Ajax\Login">
+        <plugin name="faonni_recaptcha" type="Faonni\ReCaptcha\Plugin\Customer\Controller\Ajax\LoginPlugin" sortOrder="52" />
+    </type>	
 </config> 
