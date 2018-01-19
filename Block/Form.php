@@ -16,7 +16,7 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 class Form extends Template
 {
     /**
-     * Helper instance
+     * Helper
      *
      * @var \Faonni\ReCaptcha\Helper\Data
      */
@@ -51,7 +51,17 @@ class Form extends Template
     {
         return $this->_helper->isEnabled();
     } 
-    
+	
+    /**
+     * Retrieve Assoc Array Of ReCaptcha Configuration
+     *
+     * @return array
+     */
+    public function getConfig()
+    {
+        return $this->_helper->getConfig();
+    }
+	
     /**
      * Retrieve Site Key
      *

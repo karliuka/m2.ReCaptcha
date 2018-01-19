@@ -12,19 +12,19 @@ use Magento\Framework\Locale\ResolverInterface;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
- * ReCaptcha Block Head
+ * Head Block
  */
 class Head extends Template
 {
     /**
-     * Helper instance
+     * Helper
      *
      * @var \Faonni\ReCaptcha\Helper\Data
      */
     protected $_helper;
 
     /**
-     * Resolver instance
+     * Locale Resolver
      *
      * @var Magento\Framework\Locale\ResolverInterface
      */
@@ -74,7 +74,7 @@ class Head extends Template
     }
 
     /**
-     * Return locale code
+     * Retrieve locale code
      *
      * @return string
      */

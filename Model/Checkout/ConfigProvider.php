@@ -10,7 +10,7 @@ use Magento\Checkout\Model\ConfigProviderInterface;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
- * ReCaptcha Config Provider
+ * Config Provider
  */
 class ConfigProvider implements ConfigProviderInterface
 {
@@ -31,22 +31,7 @@ class ConfigProvider implements ConfigProviderInterface
     ) {
         $this->_helper = $helper;      
     } 
-
-    /**
-     * Retrieve Assoc Array Of Checkout Configuration
-     *
-     * @return array
-     */
-    public function getConfig()
-    {
-        return ['recaptcha' => [
-			'enabled' => $this->isEnabled(),
-			'type' => $this->getType(),
-			'size' => $this->getSize(),
-			'theme' => $this->getTheme(),
-			'sitekey' => $this->getSiteKey()			
-        ]];
-    }
+	
     /**
      * Check ReCaptcha functionality should be enabled
      *
@@ -56,6 +41,16 @@ class ConfigProvider implements ConfigProviderInterface
     {
         return $this->_helper->isEnabled();
     } 
+
+    /**
+     * Retrieve Assoc Array Of Checkout Configuration
+     *
+     * @return array
+     */
+    public function getConfig()
+    {
+        return ['recaptcha' => $this->_helper->getConfig()];
+    }
     
     /**
      * Retrieve Site Key
@@ -68,7 +63,7 @@ class ConfigProvider implements ConfigProviderInterface
     }
 
     /**
-     * Retrieve Type of ReCAPTCHA
+     * Retrieve Type of ReCaptcha
      *
      * @return  string|null
      */
@@ -78,7 +73,7 @@ class ConfigProvider implements ConfigProviderInterface
     } 
 
     /**
-     * Retrieve Size of ReCAPTCHA
+     * Retrieve Size of ReCaptcha
      *
      * @return  string|null
      */
@@ -88,7 +83,7 @@ class ConfigProvider implements ConfigProviderInterface
     } 
 
     /**
-     * Retrieve Color theme of ReCAPTCHA
+     * Retrieve Color theme of ReCaptcha
      *
      * @return  string|null
      */

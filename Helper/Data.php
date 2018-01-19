@@ -12,7 +12,7 @@ use Magento\Framework\App\Helper\Context;
 use Faonni\ReCaptcha\Model\Form\AbstractFormConfig;
 
 /**
- * Faonni ReCaptcha Data helper
+ * Helper
  */
 class Data extends AbstractHelper
 {
@@ -37,17 +37,17 @@ class Data extends AbstractHelper
     const XML_FORMS = 'customer/recaptcha/forms';
       
     /**
-     * Type of ReCAPTCHA config path
+     * Type of ReCaptcha config path
      */
     const XML_TYPE = 'customer/recaptcha/type';
       
     /**
-     * Size of ReCAPTCHA config path
+     * Size of ReCaptcha config path
      */
     const XML_SIZE = 'customer/recaptcha/size';        
       
     /**
-     * Color theme of ReCAPTCHA config path
+     * Color theme of ReCaptcha config path
      */
     const XML_THEME = 'customer/recaptcha/theme'; 
     
@@ -66,7 +66,7 @@ class Data extends AbstractHelper
     protected $_posts = [];
     
     /**
-     * FormConfig instance
+     * Form Config
      *		
      * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
      */
@@ -90,7 +90,7 @@ class Data extends AbstractHelper
     }
     
     /**
-     * Initialize ReCaptcha Helper
+     * Initialize Helper
      *
      * @return Mage_Core_Helper_Abstract
      */
@@ -112,8 +112,24 @@ class Data extends AbstractHelper
      */
     public function isEnabled()
     {
-        return $this->isModuleOutputEnabled() && $this->_getConfig($this::XML_ENABLED);
+        return $this->_getConfig($this::XML_ENABLED);
     } 
+	
+    /**
+     * Retrieve Assoc Array Of ReCaptcha Configuration
+     *
+     * @return array
+     */
+    public function getConfig()
+    {
+        return [
+			'enabled' => $this->isEnabled(),
+			'type' => $this->getType(),
+			'size' => $this->getSize(),
+			'theme' => $this->getTheme(),
+			'sitekey' => $this->getSiteKey()			
+        ];
+    }
     
     /**
      * Retrieve Site Key
@@ -146,7 +162,7 @@ class Data extends AbstractHelper
     } 
         
     /**
-     * Retrieve Type of ReCAPTCHA
+     * Retrieve Type of ReCaptcha
      *
      * @return  string|null
      */
@@ -156,7 +172,7 @@ class Data extends AbstractHelper
     } 
     
     /**
-     * Retrieve Size of ReCAPTCHA
+     * Retrieve Size of ReCaptcha
      *
      * @return  string|null
      */
@@ -166,7 +182,7 @@ class Data extends AbstractHelper
     } 
     
     /**
-     * Retrieve Color theme of ReCAPTCHA
+     * Retrieve Color theme of ReCaptcha
      *
      * @return  string|null
      */

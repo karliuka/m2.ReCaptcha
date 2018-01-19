@@ -9,7 +9,7 @@ namespace Faonni\ReCaptcha\Helper\Adminhtml;
 use Faonni\ReCaptcha\Helper\Data as AbstractHelper;
 
 /**
- * Faonni ReCaptcha Adminhtml Data helper
+ * Adminhtml Helper
  */
 class Data extends AbstractHelper
 {
@@ -34,17 +34,17 @@ class Data extends AbstractHelper
     const XML_FORMS = 'admin/recaptcha/forms';
       
     /**
-     * Type of ReCAPTCHA config path
+     * Type of ReCaptcha config path
      */
     const XML_TYPE = 'admin/recaptcha/type';
       
     /**
-     * Size of ReCAPTCHA config path
+     * Size of ReCaptcha config path
      */
     const XML_SIZE = 'admin/recaptcha/size';        
       
     /**
-     * Color theme of ReCAPTCHA config path
+     * Color theme of ReCaptcha config path
      */
     const XML_THEME = 'admin/recaptcha/theme';   
 }
