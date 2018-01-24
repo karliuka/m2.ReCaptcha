@@ -8,6 +8,7 @@ namespace Faonni\ReCaptcha\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
@@ -20,21 +21,31 @@ class Form extends Template
      *
      * @var \Faonni\ReCaptcha\Helper\Data
      */
-    protected $_helper;  
+    protected $_helper; 
     
     /**
-     * Initialize block
+     * Json Helper
+     *
+     * @var \Magento\Framework\Json\Helper\Data
+     */
+    protected $_jsonHelper;    
+    
+    /**
+     * Initialize Block
      * 	
      * @param Context $context
      * @param Data $helper
+     * @param JsonHelper $jsonHelper     
      * @param array $data
      */
     public function __construct(
 		Context $context, 
 		ReCaptchaHelper $helper,
+		JsonHelper $jsonHelper,
 		array $data = []
 	) {
         $this->_helper = $helper;
+        $this->_jsonHelper = $jsonHelper;
 		
         parent::__construct(
 			$context, 
@@ -43,7 +54,7 @@ class Form extends Template
     }
     
     /**
-     * Check ReCaptcha functionality should be enabled
+     * Check ReCaptcha Functionality Should Be Enabled
      *
      * @return bool
      */
@@ -61,7 +72,19 @@ class Form extends Template
     {
         return $this->_helper->getConfig();
     }
-	
+    
+    /**
+     * Retrieve ReCaptcha Configuration as Json
+     *
+     * @return string
+     */
+    public function getJsonConfig()
+    {
+        return $this->_jsonHelper->jsonEncode(
+			$this->getConfig()
+        );
+    }
+    
     /**
      * Retrieve Site Key
      *

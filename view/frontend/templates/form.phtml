@@ -6,5 +6,10 @@
  */
 ?>
 <?php if ($block->isEnabled()) : ?>
-<div class="g-recaptcha<?php if ($block->getSize() == 'compact'): ?> g-recaptcha-compact<?php endif ?>" data-theme="<?php echo $block->getTheme() ?>" data-type="<?php echo $block->getType() ?>" data-size="<?php echo $block->getSize() ?>" data-sitekey="<?php echo $block->getSiteKey() ?>"></div>
+<div class="g-recaptcha"></div>
+<script type="text/x-magento-init">
+	{'.g-recaptcha': { 
+		'faonni/recaptcha': <?php echo $block->getJsonConfig() ?>
+	}}
+</script>
 <?php endif ?>
