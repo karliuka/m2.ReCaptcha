@@ -24,16 +24,29 @@ function($) {
 		},
 		
 		/**
-		* Initialize Widget
-		* @returns {void}
-		*/		
+		 * Initialize Widget
+		 * @returns {void}
+		 */		
 		_create: function() {
-			if (typeof grecaptcha != 'undefined') {
-				$(this.element).find('.g-recaptcha').each(function (index, element) {
-					grecaptcha.render(element, this.options);
-				}.bind(this));
+			if ($(this.element).hasClass('g-recaptcha')) {
+				this._render(this.element.get(0));
+			} else {
+				$(this.element).find('.g-recaptcha').each(function(index, element) {
+					this._render(element);
+				}.bind(this));					
 			}
-		}	
+		},
+		
+		/**
+		 * Render reCaptcha
+		 * @param {Element} element
+		 * @returns {void}
+		 */		
+		_render: function(element) {
+			if (typeof grecaptcha != 'undefined') {
+				grecaptcha.render(element, this.options);
+			}
+		}			
 	});
  
     return $.faonni.reCaptcha;

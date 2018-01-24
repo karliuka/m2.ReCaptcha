@@ -8,8 +8,6 @@
 <?php if ($block->isEnabled()) : ?>
 <div class="g-recaptcha"></div>
 <script type="text/x-magento-init">
-	{'.g-recaptcha': { 
-		'faonni/recaptcha': <?php echo $block->getJsonConfig() ?>
-	}}
+	{".g-recaptcha": {"faonni/recaptcha": <?php echo $block->getJsonConfig() ?>}}
 </script>
 <?php endif ?>
