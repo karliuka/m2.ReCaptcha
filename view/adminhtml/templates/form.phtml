@@ -6,5 +6,7 @@
  */
 ?>
 <?php if ($block->isEnabled()) : ?>
-<div class="admin__field g-recaptcha<?php if ($block->getSize() == 'compact'): ?> g-recaptcha-compact<?php endif ?>" data-theme="<?php echo $block->getTheme() ?>" data-type="<?php echo $block->getType() ?>" data-size="<?php echo $block->getSize() ?>" data-sitekey="<?php echo $block->getSiteKey() ?>"></div>
+	<div class="admin__field g-recaptcha<?php if ($block->isCompact()): ?> g-recaptcha-compact<?php endif ?>" 
+		data-mage-init='{"faonni/recaptcha": <?php /* @escapeNotVerified */ echo $block->getJsonConfig() ?>}'>
+	</div>
 <?php endif ?>

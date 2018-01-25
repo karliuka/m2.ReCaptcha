@@ -6,8 +6,8 @@
  */
 ?>
 <?php if ($block->isEnabled()) : ?>
-	<div class="g-recaptcha"></div>
+	<div class="g-recaptcha<?php if ($block->isCompact()): ?> g-recaptcha-compact<?php endif ?>"></div>
 	<script type="text/x-magento-init">
-		{".g-recaptcha": {"faonni/recaptcha": <?php echo $block->getJsonConfig() ?>}}
+		{".g-recaptcha": {"faonni/recaptcha": <?php /* @escapeNotVerified */ echo $block->getJsonConfig() ?>}}
 	</script>
 <?php endif ?>

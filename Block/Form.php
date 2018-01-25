@@ -67,6 +67,7 @@ class Form extends Template
      * Retrieve Assoc Array Of ReCaptcha Configuration
      *
      * @return array
+     * @since 2.0.8     
      */
     public function getConfig()
     {
@@ -77,6 +78,7 @@ class Form extends Template
      * Retrieve ReCaptcha Configuration as Json
      *
      * @return string
+     * @since 2.0.8     
      */
     public function getJsonConfig()
     {
@@ -89,6 +91,7 @@ class Form extends Template
      * Retrieve Site Key
      *
      * @return  string|null
+     * @deprecated 2.0.8   
      */
     public function getSiteKey()
     {
@@ -99,6 +102,7 @@ class Form extends Template
      * Retrieve Type of ReCAPTCHA
      *
      * @return  string|null
+     * @deprecated 2.0.8     
      */
     public function getType()
     {
@@ -108,6 +112,7 @@ class Form extends Template
     /**
      * Retrieve Size of ReCAPTCHA
      *
+     * @deprecated 2.0.8     
      * @return  string|null
      */
     public function getSize()
@@ -119,9 +124,21 @@ class Form extends Template
      * Retrieve Color theme of ReCAPTCHA
      *
      * @return  string|null
+     * @deprecated 2.0.8     
      */
     public function getTheme()
     {
         return $this->_helper->getTheme();
-    }               
+    }
+    
+    /**
+     * Check Compact Size
+     *
+     * @return bool
+     * @since 2.0.8     
+     */
+    public function isCompact()
+    {
+        return $this->_helper->getSize() == 'compact';
+    }     
 } 
