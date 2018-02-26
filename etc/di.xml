@@ -25,7 +25,7 @@
                     <item name="post" xsi:type="string">customer_account_loginpost</item>
                 </item>
                 <item name="checkout_index_index" xsi:type="array">
-                    <item name="label" xsi:type="string">Checkout Login</item>
+                    <item name="label" xsi:type="string">Ajax Login</item>
                     <item name="handle" xsi:type="string">recaptcha_checkout_login_field</item>
                     <item name="post" xsi:type="string">customer_ajax_login</item>
                 </item> 				
