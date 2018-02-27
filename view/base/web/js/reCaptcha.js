@@ -5,9 +5,10 @@
  */ 
 define([
     'jquery',
+	'Magento_Customer/js/action/login',
 	'domReady!'
 ], 
-function($) {
+function($, login) {
     'use strict';
 
 	$.widget('faonni.reCaptcha', {
@@ -44,7 +45,10 @@ function($) {
 		 */		
 		_render: function(element) {
 			if (typeof grecaptcha != 'undefined') {
-				grecaptcha.render(element, this.options);
+				var id = grecaptcha.render(element, this.options);
+				login.registerLoginCallback(function(data) {
+					grecaptcha.reset(id);
+				}.bind(this));				
 			}
 		}			
 	});
