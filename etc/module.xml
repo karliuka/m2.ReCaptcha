@@ -10,7 +10,7 @@
 	xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
     <module name="Faonni_ReCaptcha" setup_version="2.0.7">
         <sequence>
-            <module name="Magento_Customer"/>
+            <module name="Magento_Checkout"/>
         </sequence>
     </module>
 </config> 
