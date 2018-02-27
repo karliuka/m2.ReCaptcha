@@ -18,7 +18,7 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 use Faonni\ReCaptcha\Model\Provider;
 
 /**
- * ReCaptcha Validate observer
+ * ReCaptcha Validate Observer
  */
 class ValidateObserver implements ObserverInterface
 {

@@ -6,7 +6,8 @@
 define([
     'jquery',
     'uiComponent',
-	'ko'
+	'ko',
+	'domReady!'
 ],
 function ($, Component, ko) {
     'use strict';

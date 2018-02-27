@@ -33,7 +33,6 @@
                 <field id="forms" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Forms</label>
                     <source_model>Faonni\ReCaptcha\Model\Config\Source\Form</source_model>
-					<backend_model>Faonni\ReCaptcha\Model\Config\Backend\Form</backend_model>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
