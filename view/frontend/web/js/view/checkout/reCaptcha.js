@@ -53,6 +53,14 @@ function ($, Component, ko) {
         },
 		
         /**
+         * Check Compact Size
+         * @return {Boolean}
+         */
+        isCompact: function () {
+            return this.config.size == 'compact';
+        },
+		
+        /**
          * Retrieve Config
          * @return {Object}
          */
