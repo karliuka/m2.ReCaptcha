@@ -9,11 +9,17 @@ Extension is integrate Google Recaptcha with your Magento2 store.
 
 <img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/front.png" style="width:100%"/>
 
-### Configuration page
+### Admin Login page
 
-<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/config.png" style="width:100%"/>
+<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/admin.png" style="width:100%"/>
 
-## Install with Composer as you go
+## Compatibility
+
+Magento CE(EE) 2.0.x, 2.1.x, 2.2.x
+
+## Install
+
+#### Install via Composer (recommend)
 
 1. Go to Magento2 root folder
 
@@ -23,11 +29,70 @@ Extension is integrate Google Recaptcha with your Magento2 store.
     composer require faonni/module-re-captcha
     ```
    Wait while dependencies are updated.
+   
+#### Manual Installation
+   
+1. Create a folder {Magento root}/app/code/Faonni/ReCaptcha
 
-3. Enter following commands to enable module:
+2. Download the corresponding [latest version](https://github.com/karliuka/m2.ReCaptcha/releases)
+
+3. Copy the unzip content to the folder ({Magento root}/app/code/Faonni/ReCaptcha)
+
+### Completion of installation
+
+1. Go to Magento2 root folder
+
+2. Enter following commands:
 
     ```bash
 	php bin/magento setup:upgrade
 	php bin/magento setup:di:compile
 	php bin/magento setup:static-content:deploy  (optional)
+
+### Configuration Frontend
+
+In the Magento Admin Panel go to *Stores > Configuration > Customers > Customer Configuration > ReCAPTCHA*.
+
+<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/tracking-link/config.png" style="width:100%"/>
+
+### Configuration Backend
+
+In the Magento Admin Panel go to *Stores > Configuration > Advanced > Admin > ReCAPTCHA*.
+
+<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/tracking-link/config-admin.png" style="width:100%"/>
+
+## Uninstall
+This works only with modules defined as Composer packages.
+
+#### Remove database data
+
+1. Go to Magento2 root folder
+
+2. Enter following commands to remove database data:
+
+    ```bash
+    php bin/magento module:uninstall -r Faonni_ReCaptcha
+  
+#### Remove Extension
+    
+1. Go to Magento2 root folder
+
+2. Enter following commands to remove:
+
+    ```bash
+    composer remove faonni/module-re-captcha
+    ```
+
+### Completion of uninstall
+
+1. Go to Magento2 root folder
+
+2. Enter following commands:
+
+    ```bash
+	php bin/magento setup:upgrade
+	php bin/magento setup:di:compile
+	php bin/magento setup:static-content:deploy  (optional)
+
+
 
