@@ -112,7 +112,7 @@ class Data extends AbstractHelper
      */
     public function isEnabled()
     {
-        return $this->_getConfig($this::XML_ENABLED);
+        return $this->_getConfig(static::XML_ENABLED);
     } 
 	
     /**
@@ -138,7 +138,7 @@ class Data extends AbstractHelper
      */
     public function getSiteKey()
     {
-        return $this->_getConfig($this::XML_SITE_KEY);
+        return $this->_getConfig(static::XML_SITE_KEY);
     } 
     
     /**
@@ -148,7 +148,7 @@ class Data extends AbstractHelper
      */
     public function getSecretKey()
     {
-        return $this->_getConfig($this::XML_SECRET_KEY);
+        return $this->_getConfig(static::XML_SECRET_KEY);
     } 
     
     /**
@@ -158,7 +158,7 @@ class Data extends AbstractHelper
      */
     public function getForms()
     {
-        return $this->_getConfig($this::XML_FORMS);
+        return $this->_getConfig(static::XML_FORMS);
     } 
         
     /**
@@ -168,7 +168,7 @@ class Data extends AbstractHelper
      */
     public function getType()
     {
-        return $this->_getConfig($this::XML_TYPE);
+        return $this->_getConfig(static::XML_TYPE);
     } 
     
     /**
@@ -178,7 +178,7 @@ class Data extends AbstractHelper
      */
     public function getSize()
     {
-        return $this->_getConfig($this::XML_SIZE);
+        return $this->_getConfig(static::XML_SIZE);
     } 
     
     /**
@@ -188,7 +188,7 @@ class Data extends AbstractHelper
      */
     public function getTheme()
     {
-        return $this->_getConfig($this::XML_THEME);
+        return $this->_getConfig(static::XML_THEME);
     } 
     
     /**
