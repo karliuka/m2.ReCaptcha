@@ -181,12 +181,25 @@ class ValidateObserver implements ObserverInterface
      */
     protected function _redirect(Action $controller, $action)
     {
-		$this->_addError();		
+		$this->_addError();
 		$this->_redirect->redirect(
 			$controller->getResponse(), 
-			$this->_helper->getRedirectUrl($action)
+			$this->_getRedirectUrl($action)
 		);
-    } 
+    }
+    
+    /**
+     * Retrieve the redirect URL
+     *
+     * @param  string $action
+     * @return string
+     */
+    protected function _getRedirectUrl($action)
+    {
+		return $this->_helper->isReferer($action)
+			? $this->_redirect->getRefererUrl()
+			: $this->_helper->getRedirectUrl($action);      
+    }
     
     /**
      * Represents an HTTP Response Body In JSON format
@@ -202,5 +215,5 @@ class ValidateObserver implements ObserverInterface
 			'message' => __('Incorrect reCAPTCHA')
 		]);
 		$controller->getResponse()->representJson($json);
-    }      
+    }   
 }  

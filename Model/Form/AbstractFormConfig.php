@@ -35,10 +35,7 @@ class AbstractFormConfig
             }
             if (empty($formInfo['label'])) {
                 throw new \InvalidArgumentException('Label for a ReCaptcha form has to be specified.');
-            }
-           // if (empty($formInfo['post'])) {
-           //     throw new \InvalidArgumentException('Post for a ReCaptcha form has to be specified.');
-            //}            
+            }           
         }
         $this->_config = $config;
     }
@@ -94,5 +91,19 @@ class AbstractFormConfig
             return __($this->_config[$formName]['label']);
         }
         return null;
-    }   
+    }
+        
+    /**
+     * Checks is Referer Url
+     *
+     * @param string $formName
+     * @return bool
+     */
+    public function isReferer($formName)
+    {
+        if (isset($this->_config[$formName]['referer'])) {
+            return (bool)$this->_config[$formName]['referer'];
+        }
+        return false;
+    }     
 } 

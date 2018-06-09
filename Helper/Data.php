@@ -214,6 +214,22 @@ class Data extends AbstractHelper
     }
     
     /**
+     * Checks is Referer Url
+     *
+     * @param string $post
+     * @return bool
+     */
+    public function isReferer($post)
+    {
+		foreach ($this->_formConfig->getAvailableForms() as $name) {
+			if ($this->_formConfig->getFormPost($name) == $post) {
+				return $this->_formConfig->isReferer($name);
+			}
+		}
+		return false;
+    } 
+    
+    /**
      * Get the redirect URL
      *
      * @param  string $post
