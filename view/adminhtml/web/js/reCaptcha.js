@@ -20,7 +20,7 @@ function($) {
 			type: 'image',
 			size: 'normal',
 			theme: 'light',
-			sitekey: null		
+			sitekey: null
 		},
 		
 		/**
@@ -43,9 +43,12 @@ function($) {
 		 * @returns {void}
 		 */		
 		_render: function(element) {
-			if (typeof grecaptcha != 'undefined') {
-				grecaptcha.render(element, this.options);				
-			}
+			var interval = setInterval(function() {
+				if (typeof grecaptcha != 'undefined') {
+					var id = grecaptcha.render(element, this.options);
+					clearInterval(interval);
+				}
+			}.bind(this), 1000);
 		}			
 	});
  

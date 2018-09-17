@@ -44,13 +44,16 @@ function($, login) {
 		 * @returns {void}
 		 */		
 		_render: function(element) {
-			if (typeof grecaptcha != 'undefined') {
-				var id = grecaptcha.render(element, this.options);
-				login.registerLoginCallback(function(data) {
-					grecaptcha.reset(id);
-				}.bind(this));				
-			}
-		}			
+			var interval = setInterval(function() {
+				if (typeof grecaptcha != 'undefined') {
+					var id = grecaptcha.render(element, this.options);
+					login.registerLoginCallback(function(data) {
+						grecaptcha.reset(id);
+					}.bind(this));	
+					clearInterval(interval);
+				}
+			}.bind(this), 1000);
+		}	
 	});
  
     return $.faonni.reCaptcha;
