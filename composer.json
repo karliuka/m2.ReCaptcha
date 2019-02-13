@@ -2,11 +2,11 @@
     "name": "faonni/module-re-captcha",
     "description": "Extension is integrate Google Recaptcha with your Magento2 store.",
     "type": "magento2-module",
-	"version": "2.0.13",
+	"version": "2.0.14",
     "authors": [{
         "name" : "Karliuka Vitalii",
         "email": "karliuka.vitalii@gmail.com"
-    }],		
+    }],
 	"license": [
 		"OSL-3.0"
 	],
@@ -14,8 +14,8 @@
 		"magento/module-checkout": "100.0.*|100.1.*|100.2.*"
 	},
 	"autoload": {
-        "files": [ 
-            "registration.php" 
+        "files": [
+            "registration.php"
         ],
         "psr-4": {
             "Faonni\\ReCaptcha\\": ""
