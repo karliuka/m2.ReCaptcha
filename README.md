@@ -29,9 +29,9 @@ Magento CE(EE) 2.0.x, 2.1.x, 2.2.x
     composer require faonni/module-re-captcha
     ```
    Wait while dependencies are updated.
-   
+
 #### Manual Installation
-   
+
 1. Create a folder {Magento root}/app/code/Faonni/ReCaptcha
 
 2. Download the corresponding [latest version](https://github.com/karliuka/m2.ReCaptcha/releases)
@@ -45,9 +45,9 @@ Magento CE(EE) 2.0.x, 2.1.x, 2.2.x
 2. Enter following commands:
 
     ```bash
-	php bin/magento setup:upgrade
-	php bin/magento setup:di:compile
-	php bin/magento setup:static-content:deploy  (optional)
+    php bin/magento setup:upgrade
+    php bin/magento setup:di:compile
+    php bin/magento setup:static-content:deploy  (optional)
 
 ### Configuration Frontend
 
@@ -72,9 +72,9 @@ This works only with modules defined as Composer packages.
 
     ```bash
     php bin/magento module:uninstall -r Faonni_ReCaptcha
-  
+
 #### Remove Extension
-    
+
 1. Go to Magento2 root folder
 
 2. Enter following commands to remove:
@@ -90,9 +90,6 @@ This works only with modules defined as Composer packages.
 2. Enter following commands:
 
     ```bash
-	php bin/magento setup:upgrade
-	php bin/magento setup:di:compile
-	php bin/magento setup:static-content:deploy  (optional)
-
-
-
+    php bin/magento setup:upgrade
+    php bin/magento setup:di:compile
+    php bin/magento setup:static-content:deploy  (optional)

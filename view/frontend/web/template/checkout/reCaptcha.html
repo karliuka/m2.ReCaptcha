@@ -1,17 +1,16 @@
 <!--
 /**
- * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ * Copyright © Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * See COPYING.txt for license details.
  */
 -->
 <!-- ko if: isEnabled() -->
 <div data-bind="mageInit: {'faonni/recaptcha': getConfig()}">
-	<!-- ko ifnot: isCompact() -->
-	<div class="g-recaptcha"></div>
-	<!-- /ko -->
-	<!-- ko if: isCompact() -->
-	<div class="g-recaptcha g-recaptcha-compact"></div>
-	<!-- /ko -->	
+    <!-- ko ifnot: isCompact() -->
+    <div class="g-recaptcha"></div>
+    <!-- /ko -->
+    <!-- ko if: isCompact() -->
+    <div class="g-recaptcha g-recaptcha-compact"></div>
+    <!-- /ko -->	
 </div>
 <!-- /ko -->
