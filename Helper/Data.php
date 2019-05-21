@@ -92,7 +92,7 @@ class Data extends AbstractHelper
     /**
      * Initialize Helper
      *
-     * @return Mage_Core_Helper_Abstract
+     * @return $this
      */
     protected function _init()
     {

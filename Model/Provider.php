@@ -68,7 +68,7 @@ class Provider
      * Returns the Zend Http Client
 	 *
      * @param string $url	 
-     * @return Zend_Http_Client
+     * @return \Zend_Http_Client
      */
     public function getClient($url) 
 	{

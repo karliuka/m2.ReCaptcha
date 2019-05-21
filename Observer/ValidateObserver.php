@@ -65,7 +65,7 @@ class ValidateObserver implements ObserverInterface
     /**
      * Message Manager
      * 	
-     * @var \Magento\Message\ManagerInterface
+     * @var \Magento\Framework\Message\ManagerInterface
      */
     protected $_messageManager;	   
         

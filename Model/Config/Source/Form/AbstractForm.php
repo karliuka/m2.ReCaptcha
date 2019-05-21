@@ -17,7 +17,7 @@ class AbstractForm implements ArrayInterface
     /**
      * FormConfig instance
      *		
-     * @var \Faonni\ReCaptcha\Model\Form\FormConfig
+     * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
      */
     protected $_config;
     
