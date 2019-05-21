@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Helper;
@@ -20,75 +20,76 @@ class Data extends AbstractHelper
      * Enabled config path
      */
     const XML_ENABLED = 'customer/recaptcha/enabled';
-    
+
     /**
      * Site Key config path
      */
     const XML_SITE_KEY = 'customer/recaptcha/site_key';
-    
+
     /**
      * Secret Key config path
      */
     const XML_SECRET_KEY = 'customer/recaptcha/secret_key';
-    
+
     /**
      * Allowed forms config path
      */
     const XML_FORMS = 'customer/recaptcha/forms';
-      
+
     /**
      * Type of ReCaptcha config path
      */
     const XML_TYPE = 'customer/recaptcha/type';
-      
+
     /**
      * Size of ReCaptcha config path
      */
-    const XML_SIZE = 'customer/recaptcha/size';        
-      
+    const XML_SIZE = 'customer/recaptcha/size';
+
     /**
      * Color theme of ReCaptcha config path
      */
-    const XML_THEME = 'customer/recaptcha/theme'; 
-    
+    const XML_THEME = 'customer/recaptcha/theme';
+
     /**
      * Allowed forms list
-     * 	 
+     *
      * @var array
      */
     protected $_form = [];
-	
+
     /**
      * Allowed post actions list
-     * 	 
+     *
      * @var array
      */
     protected $_posts = [];
-    
+
     /**
      * Form Config
-     *		
+     *
      * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
      */
-    protected $_formConfig;    
-    
+    protected $_formConfig;
+
     /**
      * Initialize helper
-     * 
+     *
      * @param Context $context
      * @param AbstractFormConfig $formConfig
      */
     public function __construct(
         Context $context,
         AbstractFormConfig $formConfig
-    ) {         
+    ) {
         parent::__construct(
-			$context
-		);		
-		$this->_formConfig = $formConfig; 
+            $context
+        );
+
+        $this->_formConfig = $formConfig;
         $this->_init();
     }
-    
+
     /**
      * Initialize Helper
      *
@@ -96,15 +97,17 @@ class Data extends AbstractHelper
      */
     protected function _init()
     {
-		$forms = explode(',', $this->getForms());
-		foreach ($this->_formConfig->getAvailableForms() as $name) {
-			if (false === in_array($name, $forms)) continue;
-			$this->_form[$name] = true;
-			$this->_posts[$this->_formConfig->getFormPost($name)] = true;
-		}      
+        $forms = explode(',', $this->getForms());
+        foreach ($this->_formConfig->getAvailableForms() as $name) {
+            if (false === in_array($name, $forms)) {
+                continue;
+            }
+            $this->_form[$name] = true;
+            $this->_posts[$this->_formConfig->getFormPost($name)] = true;
+        }
         return $this;
     }
-                
+
     /**
      * Check ReCaptcha functionality should be enabled
      *
@@ -113,8 +116,8 @@ class Data extends AbstractHelper
     public function isEnabled()
     {
         return $this->_getConfig(static::XML_ENABLED);
-    } 
-	
+    }
+
     /**
      * Retrieve Assoc Array Of ReCaptcha Configuration
      *
@@ -123,14 +126,14 @@ class Data extends AbstractHelper
     public function getConfig()
     {
         return [
-			'enabled' => $this->isEnabled(),
-			'type' => $this->getType(),
-			'size' => $this->getSize(),
-			'theme' => $this->getTheme(),
-			'sitekey' => $this->getSiteKey()			
+            'enabled' => $this->isEnabled(),
+            'type' => $this->getType(),
+            'size' => $this->getSize(),
+            'theme' => $this->getTheme(),
+            'sitekey' => $this->getSiteKey()
         ];
     }
-    
+
     /**
      * Retrieve Site Key
      *
@@ -139,8 +142,8 @@ class Data extends AbstractHelper
     public function getSiteKey()
     {
         return $this->_getConfig(static::XML_SITE_KEY);
-    } 
-    
+    }
+
     /**
      * Retrieve Secret Key
      *
@@ -149,8 +152,8 @@ class Data extends AbstractHelper
     public function getSecretKey()
     {
         return $this->_getConfig(static::XML_SECRET_KEY);
-    } 
-    
+    }
+
     /**
      * Retrieve Allowed forms
      *
@@ -159,8 +162,8 @@ class Data extends AbstractHelper
     public function getForms()
     {
         return $this->_getConfig(static::XML_FORMS);
-    } 
-        
+    }
+
     /**
      * Retrieve Type of ReCaptcha
      *
@@ -169,8 +172,8 @@ class Data extends AbstractHelper
     public function getType()
     {
         return $this->_getConfig(static::XML_TYPE);
-    } 
-    
+    }
+
     /**
      * Retrieve Size of ReCaptcha
      *
@@ -179,8 +182,8 @@ class Data extends AbstractHelper
     public function getSize()
     {
         return $this->_getConfig(static::XML_SIZE);
-    } 
-    
+    }
+
     /**
      * Retrieve Color theme of ReCaptcha
      *
@@ -189,8 +192,8 @@ class Data extends AbstractHelper
     public function getTheme()
     {
         return $this->_getConfig(static::XML_THEME);
-    } 
-    
+    }
+
     /**
      * Check the permission from form
      *
@@ -198,10 +201,10 @@ class Data extends AbstractHelper
      * @return bool
      */
     public function isFormAllowed($name)
-    {	
+    {
         return $this->isEnabled() && isset($this->_form[$name]);
     }
-	
+
     /**
      * Check the permission from post action
      *
@@ -212,7 +215,7 @@ class Data extends AbstractHelper
     {
         return $this->isEnabled() && isset($this->_posts[$name]);
     }
-    
+
     /**
      * Checks is Referer Url
      *
@@ -221,14 +224,14 @@ class Data extends AbstractHelper
      */
     public function isReferer($post)
     {
-		foreach ($this->_formConfig->getAvailableForms() as $name) {
-			if ($this->_formConfig->getFormPost($name) == $post) {
-				return $this->_formConfig->isReferer($name);
-			}
-		}
-		return false;
-    } 
-    
+        foreach ($this->_formConfig->getAvailableForms() as $name) {
+            if ($this->_formConfig->getFormPost($name) == $post) {
+                return $this->_formConfig->isReferer($name);
+            }
+        }
+        return false;
+    }
+
     /**
      * Get the redirect URL
      *
@@ -237,13 +240,13 @@ class Data extends AbstractHelper
      */
     public function getRedirectUrl($post)
     {
-		foreach ($this->_formConfig->getAvailableForms() as $name) {
-			if ($this->_formConfig->getFormPost($name) == $post) {
-				return str_replace('_', '/', $name);
-			}
-		}        
-    }	
-                                    	
+        foreach ($this->_formConfig->getAvailableForms() as $name) {
+            if ($this->_formConfig->getFormPost($name) == $post) {
+                return str_replace('_', '/', $name);
+            }
+        }
+    }
+
     /**
      * Retrieve store configuration data
      *
@@ -253,5 +256,5 @@ class Data extends AbstractHelper
     protected function _getConfig($path)
     {
         return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
-    }      
+    }
 }

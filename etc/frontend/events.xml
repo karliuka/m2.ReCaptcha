@@ -2,23 +2,19 @@
 <!--
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	<!--
-	event controller_action_predispatch
-	-->	    
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- event controller_action_predispatch -->
     <event name="controller_action_predispatch">
-        <observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\ValidateObserver" />
+        <observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\ValidateObserver"/>
     </event>
-	<!--
-	event layout_load_before
-	-->	     
-	<event name="layout_load_before">
-		<observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\LayoutObserver" />
-		<observer name="faonni_recaptcha_default" instance="Faonni\ReCaptcha\Observer\LayoutCheckoutObserver" />
-	</event>                    
+    <!-- event layout_load_before -->
+    <event name="layout_load_before">
+        <observer name="faonni_recaptcha" instance="Faonni\ReCaptcha\Observer\LayoutObserver"/>
+        <observer name="faonni_recaptcha_default" instance="Faonni\ReCaptcha\Observer\LayoutCheckoutObserver"/>
+    </event>
 </config>

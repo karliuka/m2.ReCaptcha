@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Plugin\Checkout\Block\Cart;
@@ -42,8 +42,8 @@ class SidebarPlugin
     public function afterGetConfig(Sidebar $subject, array $result)
     {
         return array_merge_recursive(
-			$result, 
-			$this->_configProvider->getConfig()
-		);
+            $result,
+            $this->_configProvider->getConfig()
+        );
     }
 }

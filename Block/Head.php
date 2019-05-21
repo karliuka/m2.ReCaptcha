@@ -39,18 +39,18 @@ class Head extends Template
      * @param array $data
      */
     public function __construct(
-		Context $context,
-		ReCaptchaHelper $helper,
-		ResolverInterface $resolver,
-		array $data = []
-	) {
+        Context $context,
+        ReCaptchaHelper $helper,
+        ResolverInterface $resolver,
+        array $data = []
+    ) {
         $this->_helper = $helper;
         $this->_resolver = $resolver;
 
         parent::__construct(
-			$context,
-			$data
-		);
+            $context,
+            $data
+        );
     }
 
     /**

@@ -6,5 +6,8 @@
  */
 ?>
 <?php if ($block->isEnabled()) : ?>
-	<script type="text/javascript" src='//www.google.com/recaptcha/api.js?render=explicit&hl=<?php echo $block->getLocale() ?>' defer></script>
+    <script type="text/javascript"
+            src='//www.google.com/recaptcha/api.js?render=explicit&hl=<?= $block->getLocale() ?>'
+            defer>
+    </script>
 <?php endif ?>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Observer;
@@ -20,11 +20,11 @@ class LayoutCheckoutObserver implements ObserverInterface
      *
      * @var \Faonni\ReCaptcha\Helper\Data
      */
-    protected $_helper;  
-        
+    protected $_helper;
+
     /**
      * Initialize Observer
-     * 	
+     *
      * @param Data $helper
      */
     public function __construct(
@@ -41,9 +41,9 @@ class LayoutCheckoutObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-		if ($this->_helper->isFormAllowed('checkout_index_index')) {
-			$layout = $observer->getEvent()->getLayout(); 
-			$layout->getUpdate()->addHandle('recaptcha_authentication_popup');	
-		}
+        if ($this->_helper->isFormAllowed('checkout_index_index')) {
+            $layout = $observer->getEvent()->getLayout();
+            $layout->getUpdate()->addHandle('recaptcha_authentication_popup');
+        }
     }
-}  
+}

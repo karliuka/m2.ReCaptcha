@@ -2,34 +2,34 @@
 <!--
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <customer>
             <recaptcha>
-				<enable>0</enable>
-                <site_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
-                <secret_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />								
-				<forms>customer_account_create,customer_account_forgotpassword,contacts_index_index</forms>
-				<type>image</type>
-				<size>normal</size>
-				<theme>light</theme>
+                <enable>0</enable>
+                <site_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <secret_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <forms>customer_account_create,customer_account_forgotpassword,contacts_index_index</forms>
+                <type>image</type>
+                <size>normal</size>
+                <theme>light</theme>
             </recaptcha>
         </customer>
         <admin>
             <recaptcha>
-				<enable>0</enable>
-                <site_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
-                <secret_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />								
-				<forms>adminhtml_auth_login,adminhtml_auth_forgotpassword</forms>
-				<type>image</type>
-				<size>normal</size>
-				<theme>light</theme>
+                <enable>0</enable>
+                <site_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <secret_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <forms>adminhtml_auth_login,adminhtml_auth_forgotpassword</forms>
+                <type>image</type>
+                <size>normal</size>
+                <theme>light</theme>
             </recaptcha>
-        </admin>        
+        </admin>
     </default>
 </config>

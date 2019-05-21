@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Observer;
@@ -18,21 +18,21 @@ class LayoutObserver implements ObserverInterface
 {
     /**
      * Form Config
-     *	
+     *
      * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
      */
     protected $_config;
-    
+
     /**
      * Helper
      *
      * @var \Faonni\ReCaptcha\Helper\Data
      */
-    protected $_helper;  
-        
+    protected $_helper;
+
     /**
      * Initialize Observer
-     * 	
+     *
      * @param AbstractFormConfig $config
      * @param Data $helper
      */
@@ -52,14 +52,14 @@ class LayoutObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-		$name = $observer->getEvent()->getFullActionName();
-		if ($this->_helper->isFormAllowed($name)) {
-			$handle = $this->_config->getFormHandle($name);		
-			if ($handle) {
-				$layout = $observer->getEvent()->getLayout(); 
-				$layout->getUpdate()->addHandle($handle);
-			}		
-		}
-		return $this;
+        $name = $observer->getEvent()->getFullActionName();
+        if ($this->_helper->isFormAllowed($name)) {
+            $handle = $this->_config->getFormHandle($name);
+            if ($handle) {
+                $layout = $observer->getEvent()->getLayout();
+                $layout->getUpdate()->addHandle($handle);
+            }
+        }
+        return $this;
     }
-}  
+}

@@ -1,23 +1,23 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Model\Form;
 
 /**
- * Faonni ReCaptcha abstract form config 
+ * Faonni ReCaptcha abstract form config
  */
 class AbstractFormConfig
 {
     /**
      * Form config list
-     * 
+     *
      * @var array
      */
     protected $_config;
-    
+
     /**
      * Validate format of forms configuration array
      *
@@ -29,17 +29,17 @@ class AbstractFormConfig
         foreach ($config as $formName => $formInfo) {
             if (!is_string($formName) || empty($formName)) {
                 throw new \InvalidArgumentException('Name for a ReCaptcha form has to be specified.');
-            }           
+            }
             if (empty($formInfo['handle'])) {
                 throw new \InvalidArgumentException('Handle for a ReCaptcha form has to be specified.');
             }
             if (empty($formInfo['label'])) {
                 throw new \InvalidArgumentException('Label for a ReCaptcha form has to be specified.');
-            }           
+            }
         }
         $this->_config = $config;
     }
-    
+
     /**
      * Retrieve unique names of all available ReCaptcha forms
      *
@@ -49,14 +49,13 @@ class AbstractFormConfig
     {
         return array_keys($this->_config);
     }
-    
+
     /**
      * Retrieve name of a form post that corresponds to form name
      *
      * @param string $formName
      * @return string|null
      */
-     
     public function getFormPost($formName)
     {
         if (isset($this->_config[$formName]['post'])) {
@@ -64,7 +63,7 @@ class AbstractFormConfig
         }
         return null;
     }
-    
+
     /**
      * Retrieve name of a handle that corresponds to form name
      *
@@ -78,7 +77,7 @@ class AbstractFormConfig
         }
         return null;
     }
-        
+
     /**
      * Retrieve already translated label that corresponds to form name
      *
@@ -92,7 +91,7 @@ class AbstractFormConfig
         }
         return null;
     }
-        
+
     /**
      * Checks is Referer Url
      *
@@ -105,5 +104,5 @@ class AbstractFormConfig
             return (bool)$this->_config[$formName]['referer'];
         }
         return false;
-    }     
-} 
+    }
+}

@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Setup;
@@ -29,11 +29,11 @@ class Uninstall implements UninstallInterface
      * @param ConfigCollectionFactory $configCollectionFactory
      */
     public function __construct(
-		ConfigCollectionFactory $configCollectionFactory
-	) {
+        ConfigCollectionFactory $configCollectionFactory
+    ) {
         $this->_configCollectionFactory = $configCollectionFactory;
     }
-    
+
     /**
      * Uninstall DB Schema for a Module ReCaptcha
      *
@@ -44,7 +44,7 @@ class Uninstall implements UninstallInterface
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-        $this->removeConfig();	
+        $this->removeConfig();
         $setup->endSetup();
     }
 
@@ -57,13 +57,13 @@ class Uninstall implements UninstallInterface
     {
         $pathes = ['customer/recaptcha', 'admin/recaptcha'];
         foreach ($pathes as $path) {
-			/** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
-			$collection = $this->_configCollectionFactory->create(); 
-			$collection->addPathFilter($path);
+            /** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
+            $collection = $this->_configCollectionFactory->create();
+            $collection->addPathFilter($path);
 
-			foreach ($collection as $config) {
-				$config->delete(); 	
-			}
+            foreach ($collection as $config) {
+                $config->delete();
+            }
         }
-    }    
+    }
 }

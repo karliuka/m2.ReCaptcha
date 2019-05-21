@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Model\Config\Source\Form;
@@ -16,21 +16,21 @@ class AbstractForm implements ArrayInterface
 {
     /**
      * FormConfig instance
-     *		
+     *
      * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
      */
     protected $_config;
-    
+
     /**
      * Options as value-label pairs
-     * 
+     *
      * @var array
      */
     protected $_options;
-    
+
     /**
      * Initialize source
-     * 	
+     *
      * @param AbstractFormConfig $config
      */
     public function __construct(
@@ -38,7 +38,7 @@ class AbstractForm implements ArrayInterface
     ) {
         $this->_config = $config;
     }
-    
+
     /**
      * Return array of options as value-label pairs
      *
@@ -57,4 +57,4 @@ class AbstractForm implements ArrayInterface
         }
         return $this->_options;
     }
-}  
+}
