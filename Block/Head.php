@@ -12,6 +12,8 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
  * Head Block
+ *
+ * @api
  */
 class Head extends Template
 {

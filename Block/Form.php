@@ -11,7 +11,9 @@ use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
- * ReCaptcha Block Form
+ * Form Block
+ *
+ * @api
  */
 class Form extends Template
 {
