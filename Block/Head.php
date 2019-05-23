@@ -1,7 +1,6 @@
 <?php
 /**
- * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- *
+ * Copyright © Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Block;
@@ -13,6 +12,8 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
  * Head Block
+ *
+ * @api
  */
 class Head extends Template
 {
@@ -26,7 +27,7 @@ class Head extends Template
     /**
      * Locale Resolver
      *
-     * @var Magento\Framework\Locale\ResolverInterface
+     * @var \Magento\Framework\Locale\ResolverInterface
      */
     protected $_resolver;
 
@@ -39,18 +40,18 @@ class Head extends Template
      * @param array $data
      */
     public function __construct(
-		Context $context,
-		ReCaptchaHelper $helper,
-		ResolverInterface $resolver,
-		array $data = []
-	) {
+        Context $context,
+        ReCaptchaHelper $helper,
+        ResolverInterface $resolver,
+        array $data = []
+    ) {
         $this->_helper = $helper;
         $this->_resolver = $resolver;
 
         parent::__construct(
-			$context,
-			$data
-		);
+            $context,
+            $data
+        );
     }
 
     /**

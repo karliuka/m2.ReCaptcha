@@ -1,7 +1,6 @@
 <?php
 /**
- * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ * Copyright © Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * See COPYING.txt for license details.
  */
 namespace Faonni\ReCaptcha\Model\Checkout;
@@ -19,19 +18,19 @@ class ConfigProvider implements ConfigProviderInterface
      *
      * @var \Faonni\ReCaptcha\Helper\Data
      */
-    protected $_helper;   
-    
+    protected $_helper;
+
     /**
-	 * Initialize Config
-	 *	
-     * @param ReCaptchaHelper $helper    
+     * Initialize Config
+     *
+     * @param ReCaptchaHelper $helper
      */
     public function __construct(
         ReCaptchaHelper $helper
     ) {
-        $this->_helper = $helper;      
-    } 
-	
+        $this->_helper = $helper;
+    }
+
     /**
      * Check ReCaptcha functionality should be enabled
      *
@@ -40,7 +39,7 @@ class ConfigProvider implements ConfigProviderInterface
     public function isEnabled()
     {
         return $this->_helper->isEnabled();
-    } 
+    }
 
     /**
      * Retrieve Assoc Array Of Checkout Configuration
@@ -51,7 +50,7 @@ class ConfigProvider implements ConfigProviderInterface
     {
         return ['recaptcha' => $this->_helper->getConfig()];
     }
-    
+
     /**
      * Retrieve Site Key
      *
@@ -70,7 +69,7 @@ class ConfigProvider implements ConfigProviderInterface
     public function getType()
     {
         return $this->_helper->getType();
-    } 
+    }
 
     /**
      * Retrieve Size of ReCaptcha
@@ -80,7 +79,7 @@ class ConfigProvider implements ConfigProviderInterface
     public function getSize()
     {
         return $this->_helper->getSize();
-    } 
+    }
 
     /**
      * Retrieve Color theme of ReCaptcha
@@ -90,5 +89,5 @@ class ConfigProvider implements ConfigProviderInterface
     public function getTheme()
     {
         return $this->_helper->getTheme();
-    }      
+    }
 }

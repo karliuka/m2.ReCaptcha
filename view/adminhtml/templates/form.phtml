@@ -1,12 +1,14 @@
 <?php
 /**
- * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ * Copyright © Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * See COPYING.txt for license details.
  */
 ?>
 <?php if ($block->isEnabled()) : ?>
-	<div class="admin__field g-recaptcha<?php if ($block->isCompact()): ?> g-recaptcha-compact<?php endif ?>" 
-		data-mage-init='{"faonni/recaptcha": <?php /* @escapeNotVerified */ echo $block->getJsonConfig() ?>}'>
-	</div>
+    <div class="admin__field g-recaptcha
+        <?php if ($block->isCompact()) : ?>
+            g-recaptcha-compact
+        <?php endif ?>"
+        data-mage-init='{"faonni/recaptcha": <?= $block->escapeHtml($block->getJsonConfig()) ?>}'>
+    </div>
 <?php endif ?>
