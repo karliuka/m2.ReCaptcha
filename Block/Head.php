@@ -20,14 +20,14 @@ class Head extends Template
     /**
      * Helper
      *
-     * @var \Faonni\ReCaptcha\Helper\Data
+     * @var ReCaptchaHelper
      */
     protected $_helper;
 
     /**
      * Locale Resolver
      *
-     * @var \Magento\Framework\Locale\ResolverInterface
+     * @var ResolverInterface
      */
     protected $_resolver;
 
@@ -35,7 +35,7 @@ class Head extends Template
      * Initialize block
      *
      * @param Context $context
-     * @param Data $helper
+     * @param ReCaptchaHelper $helper
      * @param ResolverInterface $resolver
      * @param array $data
      */

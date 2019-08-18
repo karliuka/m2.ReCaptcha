@@ -29,21 +29,21 @@ class ValidateObserver implements ObserverInterface
     /**
      * Helper
      *
-     * @var \Faonni\ReCaptcha\Helper\Data
+     * @var ReCaptchaHelper
      */
     protected $_helper;
 
     /**
      * Json Helper
      *
-     * @var \Magento\Framework\Json\Helper\Data
+     * @var JsonHelper
      */
     protected $_jsonHelper;
 
     /**
      * Provider
      *
-     * @var \Faonni\ReCaptcha\Model\Provider
+     * @var Provider
      */
     protected $_provider;
 

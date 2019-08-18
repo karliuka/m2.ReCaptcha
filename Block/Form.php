@@ -20,14 +20,14 @@ class Form extends Template
     /**
      * Helper
      *
-     * @var \Faonni\ReCaptcha\Helper\Data
+     * @var ReCaptchaHelper
      */
     protected $_helper;
 
     /**
      * Json Helper
      *
-     * @var \Magento\Framework\Json\Helper\Data
+     * @var JsonHelper
      */
     protected $_jsonHelper;
 
@@ -35,7 +35,7 @@ class Form extends Template
      * Initialize Block
      *
      * @param Context $context
-     * @param Data $helper
+     * @param ReCaptchaHelper $helper
      * @param JsonHelper $jsonHelper
      * @param array $data
      */

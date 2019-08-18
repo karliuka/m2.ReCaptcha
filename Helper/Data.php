@@ -114,7 +114,7 @@ class Data extends AbstractHelper
      */
     public function isEnabled()
     {
-        return $this->_getConfig(static::XML_ENABLED);
+        return (bool)$this->_getConfig(static::XML_ENABLED);
     }
 
     /**
@@ -136,31 +136,31 @@ class Data extends AbstractHelper
     /**
      * Retrieve Site Key
      *
-     * @return  string|null
+     * @return  string
      */
     public function getSiteKey()
     {
-        return $this->_getConfig(static::XML_SITE_KEY);
+        return (string)$this->_getConfig(static::XML_SITE_KEY);
     }
 
     /**
      * Retrieve Secret Key
      *
-     * @return  string|null
+     * @return  string
      */
     public function getSecretKey()
     {
-        return $this->_getConfig(static::XML_SECRET_KEY);
+        return (string)$this->_getConfig(static::XML_SECRET_KEY);
     }
 
     /**
      * Retrieve Allowed forms
      *
-     * @return  string|null
+     * @return  string
      */
     public function getForms()
     {
-        return $this->_getConfig(static::XML_FORMS);
+        return (string)$this->_getConfig(static::XML_FORMS);
     }
 
     /**

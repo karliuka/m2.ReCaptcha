@@ -21,28 +21,28 @@ class ValidateLoginObserver implements ObserverInterface
     /**
      * Helper instance
      *
-     * @var \Faonni\ReCaptcha\Helper\Data
+     * @var ReCaptchaHelper
      */
     protected $_helper;
 
     /**
      * Provider instance
      *
-     * @var \Faonni\ReCaptcha\Model\Provider
+     * @var Provider
      */
     protected $_provider;
 
     /**
      * Request instance
      *
-     * @var \Magento\Framework\App\Request\Http
+     * @var Request
      */
     protected $_request;
 
     /**
      * Initialize observer
      *
-     * @param Data $helper
+     * @param ReCaptchaHelper $helper
      * @param Provider $provider
      * @param Request $request
      */
@@ -69,7 +69,7 @@ class ValidateLoginObserver implements ObserverInterface
             $recaptcha = $this->_request->getPost('g-recaptcha-response');
             if (!empty($recaptcha) &&
                 $this->_provider->validate($recaptcha, $this->_helper->getSecretKey())) {
-                return $this;
+                return;
             }
             throw new PluginAuthenticationException(
                 new Phrase('There was an error with the reCAPTCHA code, please try again.')

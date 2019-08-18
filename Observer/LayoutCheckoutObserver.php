@@ -17,14 +17,14 @@ class LayoutCheckoutObserver implements ObserverInterface
     /**
      * Helper
      *
-     * @var \Faonni\ReCaptcha\Helper\Data
+     * @var ReCaptchaHelper
      */
     protected $_helper;
 
     /**
      * Initialize Observer
      *
-     * @param Data $helper
+     * @param ReCaptchaHelper $helper
      */
     public function __construct(
         ReCaptchaHelper $helper

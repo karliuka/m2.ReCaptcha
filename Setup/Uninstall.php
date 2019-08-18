@@ -18,9 +18,9 @@ class Uninstall implements UninstallInterface
     /**
      * Config Collection Factory
      *
-     * @var \Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory
+     * @var ConfigCollectionFactory
      */
-    private $_configCollectionFactory;
+    protected $_configCollectionFactory;
 
     /**
      * Initialize Setup
@@ -52,17 +52,14 @@ class Uninstall implements UninstallInterface
      *
      * @return void
      */
-    private function removeConfig()
+    protected function removeConfig()
     {
         $pathes = ['customer/recaptcha', 'admin/recaptcha'];
         foreach ($pathes as $path) {
             /** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
             $collection = $this->_configCollectionFactory->create();
             $collection->addPathFilter($path);
-
-            foreach ($collection as $config) {
-                $config->delete();
-            }
+            $collection->walk('delete');
         }
     }
 }

@@ -18,14 +18,14 @@ class LayoutObserver implements ObserverInterface
     /**
      * Form Config
      *
-     * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
+     * @var AbstractFormConfig
      */
     protected $_config;
 
     /**
      * Helper
      *
-     * @var \Faonni\ReCaptcha\Helper\Data
+     * @var ReCaptchaHelper
      */
     protected $_helper;
 
@@ -33,7 +33,7 @@ class LayoutObserver implements ObserverInterface
      * Initialize Observer
      *
      * @param AbstractFormConfig $config
-     * @param Data $helper
+     * @param ReCaptchaHelper $helper
      */
     public function __construct(
         AbstractFormConfig $config,
@@ -59,6 +59,5 @@ class LayoutObserver implements ObserverInterface
                 $layout->getUpdate()->addHandle($handle);
             }
         }
-        return $this;
     }
 }
