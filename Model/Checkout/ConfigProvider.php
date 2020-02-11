@@ -9,7 +9,7 @@ use Magento\Checkout\Model\ConfigProviderInterface;
 use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 
 /**
- * Config Provider
+ * Checkout Config Provider
  */
 class ConfigProvider implements ConfigProviderInterface
 {
