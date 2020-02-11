@@ -11,6 +11,6 @@
         <?php endif ?>">
      </div>
     <script type="text/x-magento-init">
-        {".g-recaptcha": {"faonni/recaptcha": <?= $block->escapeHtml($block->getJsonConfig()) ?>}}
+        {".g-recaptcha": {"faonni/recaptcha": <?= /* @noEscape */ $block->getJsonConfig() ?>}}
     </script>
 <?php endif ?>

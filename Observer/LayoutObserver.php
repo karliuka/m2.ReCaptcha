@@ -20,14 +20,14 @@ class LayoutObserver implements ObserverInterface
      *
      * @var AbstractFormConfig
      */
-    protected $_config;
+    protected $config;
 
     /**
      * Helper
      *
      * @var ReCaptchaHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Initialize Observer
@@ -39,8 +39,8 @@ class LayoutObserver implements ObserverInterface
         AbstractFormConfig $config,
         ReCaptchaHelper $helper
     ) {
-        $this->_config = $config;
-        $this->_helper = $helper;
+        $this->config = $config;
+        $this->helper = $helper;
     }
 
     /**
@@ -52,8 +52,8 @@ class LayoutObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         $name = $observer->getEvent()->getFullActionName();
-        if ($this->_helper->isFormAllowed($name)) {
-            $handle = $this->_config->getFormHandle($name);
+        if ($this->helper->isFormAllowed($name)) {
+            $handle = $this->config->getFormHandle($name);
             if ($handle) {
                 $layout = $observer->getEvent()->getLayout();
                 $layout->getUpdate()->addHandle($handle);

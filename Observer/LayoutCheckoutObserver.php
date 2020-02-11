@@ -19,7 +19,7 @@ class LayoutCheckoutObserver implements ObserverInterface
      *
      * @var ReCaptchaHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Initialize Observer
@@ -29,7 +29,7 @@ class LayoutCheckoutObserver implements ObserverInterface
     public function __construct(
         ReCaptchaHelper $helper
     ) {
-        $this->_helper = $helper;
+        $this->helper = $helper;
     }
 
     /**
@@ -40,7 +40,7 @@ class LayoutCheckoutObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if ($this->_helper->isFormAllowed('checkout_index_index')) {
+        if ($this->helper->isFormAllowed('checkout_index_index')) {
             $layout = $observer->getEvent()->getLayout();
             $layout->getUpdate()->addHandle('recaptcha_authentication_popup');
         }

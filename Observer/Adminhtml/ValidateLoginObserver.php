@@ -23,21 +23,21 @@ class ValidateLoginObserver implements ObserverInterface
      *
      * @var ReCaptchaHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Provider instance
      *
      * @var Provider
      */
-    protected $_provider;
+    protected $provider;
 
     /**
      * Request instance
      *
      * @var Request
      */
-    protected $_request;
+    protected $request;
 
     /**
      * Initialize observer
@@ -51,9 +51,9 @@ class ValidateLoginObserver implements ObserverInterface
         Provider $provider,
         Request $request
     ) {
-        $this->_helper = $helper;
-        $this->_provider = $provider;
-        $this->_request = $request;
+        $this->helper = $helper;
+        $this->provider = $provider;
+        $this->request = $request;
     }
 
     /**
@@ -64,11 +64,11 @@ class ValidateLoginObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if ($this->_helper->isEnabled() &&
-            $this->_helper->isFormAllowed('adminhtml_auth_login')) {
-            $recaptcha = $this->_request->getPost('g-recaptcha-response');
+        if ($this->helper->isEnabled() &&
+            $this->helper->isFormAllowed('adminhtml_auth_login')) {
+            $recaptcha = $this->request->getPost('g-recaptcha-response');
             if (!empty($recaptcha) &&
-                $this->_provider->validate($recaptcha, $this->_helper->getSecretKey())) {
+                $this->provider->validate($recaptcha, $this->helper->getSecretKey())) {
                 return;
             }
             throw new PluginAuthenticationException(
