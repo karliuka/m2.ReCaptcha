@@ -55,21 +55,21 @@ class Data extends AbstractHelper
      *
      * @var array
      */
-    protected $_form = [];
+    protected $form = [];
 
     /**
      * Allowed post actions list
      *
      * @var array
      */
-    protected $_posts = [];
+    protected $posts = [];
 
     /**
      * Form Config
      *
-     * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
+     * @var AbstractFormConfig
      */
-    protected $_formConfig;
+    protected $formConfig;
 
     /**
      * Initialize helper
@@ -81,12 +81,13 @@ class Data extends AbstractHelper
         Context $context,
         AbstractFormConfig $formConfig
     ) {
+        $this->formConfig = $formConfig;
+
         parent::__construct(
             $context
         );
 
-        $this->_formConfig = $formConfig;
-        $this->_init();
+        $this->init();
     }
 
     /**
@@ -94,15 +95,15 @@ class Data extends AbstractHelper
      *
      * @return $this
      */
-    protected function _init()
+    protected function init()
     {
         $forms = explode(',', $this->getForms());
-        foreach ($this->_formConfig->getAvailableForms() as $name) {
+        foreach ($this->formConfig->getAvailableForms() as $name) {
             if (false === in_array($name, $forms)) {
                 continue;
             }
-            $this->_form[$name] = true;
-            $this->_posts[$this->_formConfig->getFormPost($name)] = true;
+            $this->form[$name] = true;
+            $this->posts[$this->formConfig->getFormPost($name)] = true;
         }
         return $this;
     }
@@ -201,7 +202,7 @@ class Data extends AbstractHelper
      */
     public function isFormAllowed($name)
     {
-        return $this->isEnabled() && isset($this->_form[$name]);
+        return $this->isEnabled() && isset($this->form[$name]);
     }
 
     /**
@@ -212,7 +213,7 @@ class Data extends AbstractHelper
      */
     public function isPostAllowed($name)
     {
-        return $this->isEnabled() && isset($this->_posts[$name]);
+        return $this->isEnabled() && isset($this->posts[$name]);
     }
 
     /**
@@ -223,9 +224,9 @@ class Data extends AbstractHelper
      */
     public function isReferer($post)
     {
-        foreach ($this->_formConfig->getAvailableForms() as $name) {
-            if ($this->_formConfig->getFormPost($name) == $post) {
-                return $this->_formConfig->isReferer($name);
+        foreach ($this->formConfig->getAvailableForms() as $name) {
+            if ($this->formConfig->getFormPost($name) == $post) {
+                return $this->formConfig->isReferer($name);
             }
         }
         return false;
@@ -239,8 +240,8 @@ class Data extends AbstractHelper
      */
     public function getRedirectUrl($post)
     {
-        foreach ($this->_formConfig->getAvailableForms() as $name) {
-            if ($this->_formConfig->getFormPost($name) == $post) {
+        foreach ($this->formConfig->getAvailableForms() as $name) {
+            if ($this->formConfig->getFormPost($name) == $post) {
                 return str_replace('_', '/', $name);
             }
         }

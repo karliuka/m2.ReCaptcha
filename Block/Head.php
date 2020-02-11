@@ -22,14 +22,14 @@ class Head extends Template
      *
      * @var ReCaptchaHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Locale Resolver
      *
      * @var ResolverInterface
      */
-    protected $_resolver;
+    protected $resolver;
 
     /**
      * Initialize block
@@ -45,8 +45,8 @@ class Head extends Template
         ResolverInterface $resolver,
         array $data = []
     ) {
-        $this->_helper = $helper;
-        $this->_resolver = $resolver;
+        $this->helper = $helper;
+        $this->resolver = $resolver;
 
         parent::__construct(
             $context,
@@ -61,7 +61,7 @@ class Head extends Template
      */
     public function isEnabled()
     {
-        return $this->_helper->isEnabled();
+        return $this->helper->isEnabled();
     }
 
     /**
@@ -71,7 +71,7 @@ class Head extends Template
      */
     public function getSiteKey()
     {
-        return $this->_helper->getSiteKey();
+        return $this->helper->getSiteKey();
     }
 
     /**
@@ -81,6 +81,6 @@ class Head extends Template
      */
     public function getLocale()
     {
-        return $this->_resolver->getLocale();
+        return $this->resolver->getLocale();
     }
 }

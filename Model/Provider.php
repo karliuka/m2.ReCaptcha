@@ -17,14 +17,14 @@ class Provider
      *
      * @var string
      */
-    protected $_url = 'https://www.google.com/recaptcha/api/siteverify';
+    protected $url = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
      * RemoteAddress instance
      *
-     * @var \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress
+     * @var RemoteAddress
      */
-    protected $_remoteAddress;
+    protected $remoteAddress;
 
     /**
      * Initialize model
@@ -34,7 +34,7 @@ class Provider
     public function __construct(
         RemoteAddress $remoteAddress
     ) {
-        $this->_remoteAddress = $remoteAddress;
+        $this->remoteAddress = $remoteAddress;
     }
 
     /**
@@ -46,11 +46,11 @@ class Provider
      */
     public function validate($recaptcha, $secret)
     {
-        $client = $this->getClient($this->_url);
+        $client = $this->getClient($this->url);
         $client->setParameterPost([
             'secret'   => $secret,
             'response' => $recaptcha,
-            'remoteip' => $this->_remoteAddress->getRemoteAddress(),
+            'remoteip' => $this->remoteAddress->getRemoteAddress(),
         ]);
 
         $response = $client->request(\Zend_Http_Client::POST);

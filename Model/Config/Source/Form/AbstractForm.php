@@ -16,16 +16,16 @@ class AbstractForm implements ArrayInterface
     /**
      * FormConfig instance
      *
-     * @var \Faonni\ReCaptcha\Model\Form\AbstractFormConfig
+     * @var AbstractFormConfig
      */
-    protected $_config;
+    protected $config;
 
     /**
      * Options as value-label pairs
      *
      * @var array
      */
-    protected $_options;
+    protected $options;
 
     /**
      * Initialize source
@@ -35,7 +35,7 @@ class AbstractForm implements ArrayInterface
     public function __construct(
         AbstractFormConfig $config
     ) {
-        $this->_config = $config;
+        $this->config = $config;
     }
 
     /**
@@ -45,15 +45,15 @@ class AbstractForm implements ArrayInterface
      */
     public function toOptionArray()
     {
-        if ($this->_options === null) {
-            $this->_options = [];
-            foreach ($this->_config->getAvailableForms() as $name) {
-                $this->_options[] = [
-                    'label' => $this->_config->getFormLabel($name),
+        if ($this->options === null) {
+            $this->options = [];
+            foreach ($this->config->getAvailableForms() as $name) {
+                $this->options[] = [
+                    'label' => $this->config->getFormLabel($name),
                     'value' => $name,
                 ];
             }
         }
-        return $this->_options;
+        return $this->options;
     }
 }

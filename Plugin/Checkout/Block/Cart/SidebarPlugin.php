@@ -16,9 +16,9 @@ class SidebarPlugin
     /**
      * Config Provider
      *
-     * @var \Faonni\ReCaptcha\Model\Checkout\ConfigProvider
+     * @var ConfigProvider
      */
-    protected $_configProvider;
+    protected $configProvider;
 
     /**
      * Initialize Plugin
@@ -28,7 +28,7 @@ class SidebarPlugin
     public function __construct(
         ConfigProvider $configProvider
     ) {
-        $this->_configProvider = $configProvider;
+        $this->configProvider = $configProvider;
     }
 
     /**
@@ -42,7 +42,7 @@ class SidebarPlugin
     {
         return array_merge_recursive(
             $result,
-            $this->_configProvider->getConfig()
+            $this->configProvider->getConfig()
         );
     }
 }

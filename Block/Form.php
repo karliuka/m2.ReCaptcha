@@ -22,14 +22,14 @@ class Form extends Template
      *
      * @var ReCaptchaHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Json Helper
      *
      * @var JsonHelper
      */
-    protected $_jsonHelper;
+    protected $jsonHelper;
 
     /**
      * Initialize Block
@@ -45,8 +45,8 @@ class Form extends Template
         JsonHelper $jsonHelper,
         array $data = []
     ) {
-        $this->_helper = $helper;
-        $this->_jsonHelper = $jsonHelper;
+        $this->helper = $helper;
+        $this->jsonHelper = $jsonHelper;
 
         parent::__construct(
             $context,
@@ -61,7 +61,7 @@ class Form extends Template
      */
     public function isEnabled()
     {
-        return $this->_helper->isEnabled();
+        return $this->helper->isEnabled();
     }
 
     /**
@@ -72,7 +72,7 @@ class Form extends Template
      */
     public function getConfig()
     {
-        return $this->_helper->getConfig();
+        return $this->helper->getConfig();
     }
 
     /**
@@ -83,7 +83,7 @@ class Form extends Template
      */
     public function getJsonConfig()
     {
-        return $this->_jsonHelper->jsonEncode(
+        return $this->jsonHelper->jsonEncode(
             $this->getConfig()
         );
     }
@@ -96,7 +96,7 @@ class Form extends Template
      */
     public function getSiteKey()
     {
-        return $this->_helper->getSiteKey();
+        return $this->helper->getSiteKey();
     }
 
     /**
@@ -107,7 +107,7 @@ class Form extends Template
      */
     public function getType()
     {
-        return $this->_helper->getType();
+        return $this->helper->getType();
     }
 
     /**
@@ -118,7 +118,7 @@ class Form extends Template
      */
     public function getSize()
     {
-        return $this->_helper->getSize();
+        return $this->helper->getSize();
     }
 
     /**
@@ -129,7 +129,7 @@ class Form extends Template
      */
     public function getTheme()
     {
-        return $this->_helper->getTheme();
+        return $this->helper->getTheme();
     }
 
     /**
@@ -140,6 +140,6 @@ class Form extends Template
      */
     public function isCompact()
     {
-        return $this->_helper->getSize() == 'compact';
+        return $this->helper->getSize() == 'compact';
     }
 }

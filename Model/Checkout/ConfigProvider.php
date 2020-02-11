@@ -16,9 +16,9 @@ class ConfigProvider implements ConfigProviderInterface
     /**
      * Helper
      *
-     * @var \Faonni\ReCaptcha\Helper\Data
+     * @var ReCaptchaHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Initialize Config
@@ -28,7 +28,7 @@ class ConfigProvider implements ConfigProviderInterface
     public function __construct(
         ReCaptchaHelper $helper
     ) {
-        $this->_helper = $helper;
+        $this->helper = $helper;
     }
 
     /**
@@ -38,7 +38,7 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function isEnabled()
     {
-        return $this->_helper->isEnabled();
+        return $this->helper->isEnabled();
     }
 
     /**
@@ -48,7 +48,7 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig()
     {
-        return ['recaptcha' => $this->_helper->getConfig()];
+        return ['recaptcha' => $this->helper->getConfig()];
     }
 
     /**
@@ -58,7 +58,7 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getSiteKey()
     {
-        return $this->_helper->getSiteKey();
+        return $this->helper->getSiteKey();
     }
 
     /**
@@ -68,7 +68,7 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getType()
     {
-        return $this->_helper->getType();
+        return $this->helper->getType();
     }
 
     /**
@@ -78,7 +78,7 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getSize()
     {
-        return $this->_helper->getSize();
+        return $this->helper->getSize();
     }
 
     /**
@@ -88,6 +88,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getTheme()
     {
-        return $this->_helper->getTheme();
+        return $this->helper->getTheme();
     }
 }

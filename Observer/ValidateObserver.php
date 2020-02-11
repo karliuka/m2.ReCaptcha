@@ -31,42 +31,42 @@ class ValidateObserver implements ObserverInterface
      *
      * @var ReCaptchaHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Json Helper
      *
      * @var JsonHelper
      */
-    protected $_jsonHelper;
+    protected $jsonHelper;
 
     /**
      * Provider
      *
      * @var Provider
      */
-    protected $_provider;
+    protected $provider;
 
     /**
      * Response Redirect
      *
      * @var \Magento\Framework\App\Response\RedirectInterface
      */
-    protected $_redirect;
+    protected $redirect;
 
     /**
      * ActionFlag
      *
      * @var \Magento\Framework\App\ActionFlag
      */
-    protected $_actionFlag;
+    protected $actionFlag;
 
     /**
      * Message Manager
      *
      * @var \Magento\Framework\Message\ManagerInterface
      */
-    protected $_messageManager;
+    protected $messageManager;
 
     /**
      * Initialize Observer
@@ -82,12 +82,12 @@ class ValidateObserver implements ObserverInterface
         Context $context,
         Provider $provider
     ) {
-        $this->_helper = $helper;
-        $this->_jsonHelper = $jsonHelper;
-        $this->_redirect = $context->getRedirect();
-        $this->_actionFlag = $context->getActionFlag();
-        $this->_messageManager = $context->getMessageManager();
-        $this->_provider = $provider;
+        $this->helper = $helper;
+        $this->jsonHelper = $jsonHelper;
+        $this->redirect = $context->getRedirect();
+        $this->actionFlag = $context->getActionFlag();
+        $this->messageManager = $context->getMessageManager();
+        $this->provider = $provider;
     }
 
     /**
@@ -101,14 +101,14 @@ class ValidateObserver implements ObserverInterface
         $request = $observer->getEvent()->getRequest();
         $action = strtolower($request->getFullActionName());
 
-        if ($request->isPost() && $this->_helper->isPostAllowed($action)) {
-            $recaptcha = $this->_getReCaptcha($request);
+        if ($request->isPost() && $this->helper->isPostAllowed($action)) {
+            $recaptcha = $this->getReCaptcha($request);
             if (!empty($recaptcha) &&
-                $this->_provider->validate($recaptcha, $this->_helper->getSecretKey())) {
+                $this->provider->validate($recaptcha, $this->helper->getSecretKey())) {
                 return;
             }
             $controller = $observer->getEvent()->getControllerAction();
-            $this->_setResponse($request, $controller, $action);
+            $this->setResponse($request, $controller, $action);
         }
     }
 
@@ -120,13 +120,13 @@ class ValidateObserver implements ObserverInterface
      * @param string $action
      * @return void
      */
-    protected function _setResponse(RequestInterface $request, Action $controller, $action)
+    protected function setResponse(RequestInterface $request, Action $controller, $action)
     {
-        $this->_actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
+        $this->actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
         if ($request->isXmlHttpRequest()) {
-            $this->_representJson($controller);
+            $this->representJson($controller);
         } else {
-            $this->_redirect($controller, $action);
+            $this->redirect($controller, $action);
         }
     }
 
@@ -136,10 +136,10 @@ class ValidateObserver implements ObserverInterface
      * @param RequestInterface $request
      * @return string|null
      */
-    protected function _getReCaptcha(RequestInterface $request)
+    protected function getReCaptcha(RequestInterface $request)
     {
         return $request->isXmlHttpRequest()
-            ? $this->_getDecodeReCaptcha($request)
+            ? $this->getDecodeReCaptcha($request)
             : $request->getPost(self::PARAM_RECAPTCHA);
     }
 
@@ -149,10 +149,10 @@ class ValidateObserver implements ObserverInterface
      * @param RequestInterface $request
      * @return string|null
      */
-    protected function _getDecodeReCaptcha(RequestInterface $request)
+    protected function getDecodeReCaptcha(RequestInterface $request)
     {
         if ($request->getContent()) {
-            $params = $this->_jsonHelper->jsonDecode($request->getContent());
+            $params = $this->jsonHelper->jsonDecode($request->getContent());
             if (isset($params[self::PARAM_RECAPTCHA])) {
                 return $params[self::PARAM_RECAPTCHA];
             }
@@ -165,9 +165,9 @@ class ValidateObserver implements ObserverInterface
      *
      * @return void
      */
-    protected function _addError()
+    protected function addError()
     {
-        $this->_messageManager->addErrorMessage(
+        $this->messageManager->addErrorMessage(
             new Phrase('There was an error with the reCAPTCHA code, please try again.')
         );
     }
@@ -179,12 +179,12 @@ class ValidateObserver implements ObserverInterface
      * @param string $action
      * @return void
      */
-    protected function _redirect(Action $controller, $action)
+    protected function redirect(Action $controller, $action)
     {
-        $this->_addError();
-        $this->_redirect->redirect(
+        $this->addError();
+        $this->redirect->redirect(
             $controller->getResponse(),
-            $this->_getRedirectUrl($action)
+            $this->getRedirectUrl($action)
         );
     }
 
@@ -194,11 +194,11 @@ class ValidateObserver implements ObserverInterface
      * @param  string $action
      * @return string
      */
-    protected function _getRedirectUrl($action)
+    protected function getRedirectUrl($action)
     {
-        return $this->_helper->isReferer($action)
-            ? $this->_redirect->getRefererUrl()
-            : $this->_helper->getRedirectUrl($action);
+        return $this->helper->isReferer($action)
+            ? $this->redirect->getRefererUrl()
+            : $this->helper->getRedirectUrl($action);
     }
 
     /**
@@ -207,9 +207,9 @@ class ValidateObserver implements ObserverInterface
      * @param Action $controller
      * @return void
      */
-    protected function _representJson(Action $controller)
+    protected function representJson(Action $controller)
     {
-        $json = $this->_jsonHelper->jsonEncode([
+        $json = $this->jsonHelper->jsonEncode([
             'error' => 1, // compatibility with checkout as guest js
             'errors' => true, // compatibility with checkout login js
             'message' => __('Incorrect reCAPTCHA')

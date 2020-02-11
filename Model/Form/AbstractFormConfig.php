@@ -15,7 +15,7 @@ class AbstractFormConfig
      *
      * @var array
      */
-    protected $_config;
+    protected $config;
 
     /**
      * Validate format of forms configuration array
@@ -36,7 +36,7 @@ class AbstractFormConfig
                 throw new \InvalidArgumentException('Label for a ReCaptcha form has to be specified.');
             }
         }
-        $this->_config = $config;
+        $this->config = $config;
     }
 
     /**
@@ -46,7 +46,7 @@ class AbstractFormConfig
      */
     public function getAvailableForms()
     {
-        return array_keys($this->_config);
+        return array_keys($this->config);
     }
 
     /**
@@ -57,8 +57,8 @@ class AbstractFormConfig
      */
     public function getFormPost($formName)
     {
-        if (isset($this->_config[$formName]['post'])) {
-            return $this->_config[$formName]['post'];
+        if (isset($this->config[$formName]['post'])) {
+            return $this->config[$formName]['post'];
         }
         return null;
     }
@@ -71,8 +71,8 @@ class AbstractFormConfig
      */
     public function getFormHandle($formName)
     {
-        if (isset($this->_config[$formName]['handle'])) {
-            return $this->_config[$formName]['handle'];
+        if (isset($this->config[$formName]['handle'])) {
+            return $this->config[$formName]['handle'];
         }
         return null;
     }
@@ -85,8 +85,8 @@ class AbstractFormConfig
      */
     public function getFormLabel($formName)
     {
-        if (isset($this->_config[$formName]['label'])) {
-            return __($this->_config[$formName]['label']);
+        if (isset($this->config[$formName]['label'])) {
+            return __($this->config[$formName]['label']);
         }
         return null;
     }
@@ -99,8 +99,8 @@ class AbstractFormConfig
      */
     public function isReferer($formName)
     {
-        if (isset($this->_config[$formName]['referer'])) {
-            return (bool)$this->_config[$formName]['referer'];
+        if (isset($this->config[$formName]['referer'])) {
+            return (bool)$this->config[$formName]['referer'];
         }
         return false;
     }
