@@ -14,7 +14,7 @@
         "magento/module-checkout": "100.0.*|100.1.*|100.2.*"
     },
     "autoload": {
-        "files": [ 
+        "files": [
             "registration.php" 
         ],
         "psr-4": {
