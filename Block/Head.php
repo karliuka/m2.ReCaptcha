@@ -29,24 +29,24 @@ class Head extends Template
      *
      * @var ResolverInterface
      */
-    protected $resolver;
+    protected $localeResolver;
 
     /**
      * Initialize block
      *
      * @param Context $context
      * @param ReCaptchaHelper $helper
-     * @param ResolverInterface $resolver
+     * @param ResolverInterface $localeResolver
      * @param array $data
      */
     public function __construct(
         Context $context,
         ReCaptchaHelper $helper,
-        ResolverInterface $resolver,
+        ResolverInterface $localeResolver,
         array $data = []
     ) {
         $this->helper = $helper;
-        $this->resolver = $resolver;
+        $this->localeResolver = $localeResolver;
 
         parent::__construct(
             $context,
@@ -81,6 +81,6 @@ class Head extends Template
      */
     public function getLocale()
     {
-        return $this->resolver->getLocale();
+        return $this->localeResolver->getLocale();
     }
 }

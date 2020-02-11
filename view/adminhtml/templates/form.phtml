@@ -9,6 +9,6 @@
         <?php if ($block->isCompact()): ?>
             g-recaptcha-compact
         <?php endif ?>"
-        data-mage-init='{"faonni/recaptcha": <?= $block->escapeHtml($block->getJsonConfig()) ?>}'>
+        data-mage-init='{"faonni/recaptcha": <?= /* @noEscape */ $block->getJsonConfig() ?>}'>
     </div>
 <?php endif ?>
