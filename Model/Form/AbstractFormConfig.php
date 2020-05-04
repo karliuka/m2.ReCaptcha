@@ -13,14 +13,14 @@ class AbstractFormConfig
     /**
      * Form config list
      *
-     * @var array
+     * @var array[]
      */
     protected $config;
 
     /**
      * Validate format of forms configuration array
      *
-     * @param array $config
+     * @param array[] $config
      * @throws \InvalidArgumentException
      */
     public function __construct(array $config)
@@ -42,7 +42,7 @@ class AbstractFormConfig
     /**
      * Retrieve unique names of all available ReCaptcha forms
      *
-     * @return array
+     * @return string[]
      */
     public function getAvailableForms()
     {

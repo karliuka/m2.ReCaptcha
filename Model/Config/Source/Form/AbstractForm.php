@@ -23,7 +23,7 @@ class AbstractForm implements ArrayInterface
     /**
      * Options as value-label pairs
      *
-     * @var array
+     * @var array[]
      */
     protected $options;
 
@@ -41,7 +41,7 @@ class AbstractForm implements ArrayInterface
     /**
      * Return array of options as value-label pairs
      *
-     * @return array
+     * @return array[]
      */
     public function toOptionArray()
     {

@@ -15,7 +15,7 @@ class Type implements ArrayInterface
     /**
      * Return array of options as value-label pairs
      *
-     * @return array
+     * @return array[]
      */
     public function toOptionArray()
     {

@@ -184,7 +184,7 @@ class ValidateObserver implements ObserverInterface
         $this->addError();
         $this->redirect->redirect(
             $controller->getResponse(),
-            $this->getRedirectUrl($action)
+            (string)$this->getRedirectUrl($action)
         );
     }
 
@@ -192,7 +192,7 @@ class ValidateObserver implements ObserverInterface
      * Retrieve the redirect URL
      *
      * @param  string $action
-     * @return string
+     * @return string|null
      */
     protected function getRedirectUrl($action)
     {

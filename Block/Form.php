@@ -37,7 +37,7 @@ class Form extends Template
      * @param Context $context
      * @param ReCaptchaHelper $helper
      * @param JsonHelper $jsonHelper
-     * @param array $data
+     * @param mixed[] $data
      */
     public function __construct(
         Context $context,
@@ -67,7 +67,7 @@ class Form extends Template
     /**
      * Retrieve Assoc Array Of ReCaptcha Configuration
      *
-     * @return array
+     * @return mixed[]
      * @since 2.0.8
      */
     public function getConfig()

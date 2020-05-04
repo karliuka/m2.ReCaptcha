@@ -35,8 +35,8 @@ class SidebarPlugin
      * Retrieve Minicart Config
      *
      * @param Sidebar $subject
-     * @param array $result
-     * @return array
+     * @param string[] $result
+     * @return  string[]
      */
     public function afterGetConfig(Sidebar $subject, array $result)
     {

@@ -37,7 +37,7 @@ class Head extends Template
      * @param Context $context
      * @param ReCaptchaHelper $helper
      * @param ResolverInterface $localeResolver
-     * @param array $data
+     * @param mixed[] $data
      */
     public function __construct(
         Context $context,

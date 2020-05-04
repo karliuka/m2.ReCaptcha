@@ -53,14 +53,14 @@ class Data extends AbstractHelper
     /**
      * Allowed forms list
      *
-     * @var array
+     * @var bool[]
      */
     protected $form = [];
 
     /**
      * Allowed post actions list
      *
-     * @var array
+     * @var bool[]
      */
     protected $posts = [];
 
@@ -121,7 +121,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Assoc Array Of ReCaptcha Configuration
      *
-     * @return array
+     * @return mixed[]
      */
     public function getConfig()
     {
@@ -236,7 +236,7 @@ class Data extends AbstractHelper
      * Get the redirect URL
      *
      * @param  string $post
-     * @return string
+     * @return string|null
      */
     public function getRedirectUrl($post)
     {
@@ -245,6 +245,7 @@ class Data extends AbstractHelper
                 return str_replace('_', '/', $name);
             }
         }
+        return null;
     }
 
     /**
