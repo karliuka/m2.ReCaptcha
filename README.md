@@ -9,14 +9,6 @@ Extension is integrate Google Recaptcha with your Magento2 store.
 
 Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x, 2.4.x
 
-### Forgot Your Password page
-
-<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/front.png" style="width:100%"/>
-
-### Admin Login page
-
-<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/admin.png" style="width:100%"/>
-
 ## Install
 
 #### Install via Composer (recommend)
@@ -67,6 +59,14 @@ In the Magento Admin Panel go to *Stores > Configuration > Customers > Customer 
 In the Magento Admin Panel go to *Stores > Configuration > Advanced > Admin > ReCAPTCHA*.
 
 <img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/config-admin.png" style="width:100%"/>
+
+### Forgot Your Password page
+
+<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/front.png" style="width:100%"/>
+
+### Admin Login page
+
+<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/admin.png" style="width:100%"/>
 
 ## Uninstall
 This works only with modules defined as Composer packages.
