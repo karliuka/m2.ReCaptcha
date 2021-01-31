@@ -5,17 +5,9 @@
 
 Extension is integrate Google Recaptcha with your Magento2 store.
 
-### Forgot Your Password page
-
-<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/front.png" style="width:100%"/>
-
-### Admin Login page
-
-<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/admin.png" style="width:100%"/>
-
 ## Compatibility
 
-Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x
+Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x, 2.4.x
 
 ## Install
 
@@ -25,8 +17,15 @@ Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x
 
 2. Enter following commands to install module:
 
+     For Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x
+
     ```bash
-    composer require faonni/module-re-captcha
+    composer require faonni/module-re-captcha:2.0.*
+    ```
+     For Magento CE(EE) 2.4.x
+
+    ```bash
+    composer require faonni/module-re-captcha:2.4.*
     ```
    Wait while dependencies are updated.
 
@@ -38,7 +37,7 @@ Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x
 
 3. Copy the unzip content to the folder ({Magento root}/app/code/Faonni/ReCaptcha)
 
-### Completion of installation
+#### Completion of installation
 
 1. Go to Magento2 root folder
 
@@ -48,7 +47,7 @@ Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x
     php bin/magento setup:upgrade
     php bin/magento setup:di:compile
     php bin/magento setup:static-content:deploy  (optional)
-
+    ```
 ### Configuration Frontend
 
 In the Magento Admin Panel go to *Stores > Configuration > Customers > Customer Configuration > ReCAPTCHA*.
@@ -61,6 +60,14 @@ In the Magento Admin Panel go to *Stores > Configuration > Advanced > Admin > Re
 
 <img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/config-admin.png" style="width:100%"/>
 
+### Forgot Your Password page
+
+<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/front.png" style="width:100%"/>
+
+### Admin Login page
+
+<img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/admin.png" style="width:100%"/>
+
 ## Uninstall
 This works only with modules defined as Composer packages.
 
@@ -72,7 +79,7 @@ This works only with modules defined as Composer packages.
 
     ```bash
     php bin/magento module:uninstall -r Faonni_ReCaptcha
-
+    ```
 #### Remove Extension
 
 1. Go to Magento2 root folder
@@ -83,7 +90,7 @@ This works only with modules defined as Composer packages.
     composer remove faonni/module-re-captcha
     ```
 
-### Completion of uninstall
+#### Completion of uninstall
 
 1. Go to Magento2 root folder
 
@@ -93,3 +100,4 @@ This works only with modules defined as Composer packages.
     php bin/magento setup:upgrade
     php bin/magento setup:di:compile
     php bin/magento setup:static-content:deploy  (optional)
+    ```
