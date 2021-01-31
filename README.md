@@ -5,6 +5,10 @@
 
 Extension is integrate Google Recaptcha with your Magento2 store.
 
+## Compatibility
+
+Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x, 2.4.x
+
 ### Forgot Your Password page
 
 <img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/front.png" style="width:100%"/>
@@ -12,10 +16,6 @@ Extension is integrate Google Recaptcha with your Magento2 store.
 ### Admin Login page
 
 <img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/admin.png" style="width:100%"/>
-
-## Compatibility
-
-Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x, 2.4.x
 
 ## Install
 
