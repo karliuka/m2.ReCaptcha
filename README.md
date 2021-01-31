@@ -68,6 +68,10 @@ In the Magento Admin Panel go to *Stores > Configuration > Advanced > Admin > Re
 
 <img alt="Magento2 ReCaptcha" src="https://karliuka.github.io/m2/re-captcha/admin.png" style="width:100%"/>
 
+## Related Modules
+
+[ReCaptcha from B2b](https://github.com/karliuka/m2.ReCaptchaB2b) - Extension is integrate Google Recaptcha with B2B Extension your Magento2 store.
+
 ## Uninstall
 This works only with modules defined as Composer packages.
 
