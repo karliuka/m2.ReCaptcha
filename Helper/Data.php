@@ -135,7 +135,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Site Key
      *
-     * @return  string
+     * @return string
      */
     public function getSiteKey()
     {
@@ -145,7 +145,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Secret Key
      *
-     * @return  string
+     * @return string
      */
     public function getSecretKey()
     {
@@ -155,7 +155,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Allowed forms
      *
-     * @return  string
+     * @return string
      */
     public function getForms()
     {
@@ -165,7 +165,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Type of ReCaptcha
      *
-     * @return  string|null
+     * @return string|null
      */
     public function getType()
     {
@@ -175,7 +175,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Size of ReCaptcha
      *
-     * @return  string|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -185,7 +185,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Color theme of ReCaptcha
      *
-     * @return  string|null
+     * @return string|null
      */
     public function getTheme()
     {
@@ -195,7 +195,7 @@ class Data extends AbstractHelper
     /**
      * Check the permission from form
      *
-     * @param  string $name
+     * @param string $name
      * @return bool
      */
     public function isFormAllowed($name)
@@ -206,7 +206,7 @@ class Data extends AbstractHelper
     /**
      * Check the permission from post action
      *
-     * @param  string $name
+     * @param string $name
      * @return bool
      */
     public function isPostAllowed($name)
@@ -233,7 +233,7 @@ class Data extends AbstractHelper
     /**
      * Get the redirect URL
      *
-     * @param  string $post
+     * @param string $post
      * @return string|null
      */
     public function getRedirectUrl($post)
@@ -249,8 +249,8 @@ class Data extends AbstractHelper
     /**
      * Retrieve store configuration data
      *
-     * @param   string $path
-     * @return  string|null
+     * @param string $path
+     * @return string|null
      */
     protected function _getConfig($path)
     {

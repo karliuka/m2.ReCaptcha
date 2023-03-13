@@ -47,11 +47,13 @@ class LayoutObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $name = $observer->getEvent()->getFullActionName();
+        /** @var string $name */
+        $name = $observer->getEvent()->getData('full_action_name');
         if ($this->helper->isFormAllowed($name)) {
             $handle = $this->config->getFormHandle($name);
             if ($handle) {
-                $layout = $observer->getEvent()->getLayout();
+                /** @var \Magento\Framework\View\LayoutInterface $layout */
+                $layout = $observer->getEvent()->getData('layout');
                 $layout->getUpdate()->addHandle($handle);
             }
         }

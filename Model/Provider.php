@@ -10,6 +10,7 @@ use Psr\Log\LoggerInterface;
 use Laminas\Http\Request;
 use Laminas\Http\Response;
 use Laminas\Http\Client;
+use Exception;
 
 /**
  * Faonni ReCaptcha Provider

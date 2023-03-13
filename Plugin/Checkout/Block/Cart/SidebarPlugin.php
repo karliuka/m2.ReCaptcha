@@ -34,7 +34,7 @@ class SidebarPlugin
      *
      * @param Sidebar $subject
      * @param string[] $result
-     * @return  string[]
+     * @return string[]
      */
     public function afterGetConfig(Sidebar $subject, array $result)
     {

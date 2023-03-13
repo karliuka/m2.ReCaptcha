@@ -39,7 +39,8 @@ class LayoutCheckoutObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         if ($this->helper->isFormAllowed('checkout_index_index')) {
-            $layout = $observer->getEvent()->getLayout();
+            /** @var \Magento\Framework\View\LayoutInterface $layout */
+            $layout = $observer->getEvent()->getData('layout');
             $layout->getUpdate()->addHandle('recaptcha_authentication_popup');
         }
     }
