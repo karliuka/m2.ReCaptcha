@@ -24,49 +24,37 @@ class ValidateObserver implements ObserverInterface
     /**
      * Recaptcha Request Variable Name
      */
-    const PARAM_RECAPTCHA = 'g-recaptcha-response';
+    private const PARAM_RECAPTCHA = 'g-recaptcha-response';
 
     /**
-     * Helper
-     *
      * @var ReCaptchaHelper
      */
-    protected $helper;
+    private $helper;
 
     /**
-     * Json Helper
-     *
      * @var JsonHelper
      */
-    protected $jsonHelper;
+    private $jsonHelper;
 
     /**
-     * Provider
-     *
      * @var Provider
      */
-    protected $provider;
+    private $provider;
 
     /**
-     * Response Redirect
-     *
      * @var \Magento\Framework\App\Response\RedirectInterface
      */
-    protected $redirect;
+    private $redirect;
 
     /**
-     * ActionFlag
-     *
      * @var \Magento\Framework\App\ActionFlag
      */
-    protected $actionFlag;
+    private $actionFlag;
 
     /**
-     * Message Manager
-     *
      * @var \Magento\Framework\Message\ManagerInterface
      */
-    protected $messageManager;
+    private $messageManager;
 
     /**
      * Initialize Observer

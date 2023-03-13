@@ -24,22 +24,16 @@ class Provider
     private $url = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
-     * RemoteAddress instance
-     *
      * @var RemoteAddress
      */
     private $remoteAddress;
 
     /**
-     * Http client
-     *
      * @var Client
      */
     private $httpClient;
 
     /**
-     * Logger
-     *
      * @var LoggerInterface
      */
     private $logger;

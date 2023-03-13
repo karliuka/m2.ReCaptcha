@@ -15,8 +15,6 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 class LayoutCheckoutObserver implements ObserverInterface
 {
     /**
-     * Helper
-     *
      * @var ReCaptchaHelper
      */
     protected $helper;
