@@ -65,8 +65,6 @@ class Data extends AbstractHelper
     protected $posts = [];
 
     /**
-     * Form Config
-     *
      * @var AbstractFormConfig
      */
     protected $formConfig;

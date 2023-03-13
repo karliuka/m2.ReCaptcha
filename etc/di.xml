@@ -88,7 +88,7 @@
         <arguments>
             <argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
         </arguments>
-    </virtualType>	
+    </virtualType>
     <virtualType name="Faonni\ReCaptcha\Block\Adminhtml\Head" type="Faonni\ReCaptcha\Block\Head">
         <arguments>
             <argument name="helper" xsi:type="object">Faonni\ReCaptcha\Helper\Adminhtml\Data</argument>
@@ -99,7 +99,7 @@
         <arguments>
             <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\FormConfig</argument>
         </arguments>
-    </virtualType>	
+    </virtualType>
     <virtualType name="Faonni\ReCaptcha\Model\Config\Source\Adminhtml\Form" type="Faonni\ReCaptcha\Model\Config\Source\Form\AbstractForm">
         <arguments>
             <argument name="config" xsi:type="object">Faonni\ReCaptcha\Model\Form\Adminhtml\FormConfig</argument>

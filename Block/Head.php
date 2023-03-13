@@ -18,15 +18,11 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 class Head extends Template
 {
     /**
-     * Helper
-     *
      * @var ReCaptchaHelper
      */
     protected $helper;
 
     /**
-     * Locale Resolver
-     *
      * @var ResolverInterface
      */
     protected $localeResolver;

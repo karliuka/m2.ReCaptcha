@@ -14,8 +14,6 @@ use Faonni\ReCaptcha\Model\Checkout\ConfigProvider;
 class SidebarPlugin
 {
     /**
-     * Config Provider
-     *
      * @var ConfigProvider
      */
     protected $configProvider;

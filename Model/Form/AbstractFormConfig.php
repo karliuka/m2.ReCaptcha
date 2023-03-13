@@ -13,14 +13,14 @@ class AbstractFormConfig
     /**
      * Form config list
      *
-     * @var array[]
+     * @var mixed[]
      */
-    protected $config;
+    private $config;
 
     /**
      * Validate format of forms configuration array
      *
-     * @param array[] $config
+     * @param mixed[] $config
      * @throws \InvalidArgumentException
      */
     public function __construct(array $config)

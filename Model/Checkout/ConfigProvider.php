@@ -14,8 +14,6 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 class ConfigProvider implements ConfigProviderInterface
 {
     /**
-     * Helper
-     *
      * @var ReCaptchaHelper
      */
     protected $helper;

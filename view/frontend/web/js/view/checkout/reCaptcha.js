@@ -65,6 +65,6 @@ function ($, Component, ko) {
          */
         getConfig: function () {
             return this.config;
-        }	
+        }
     });
 });

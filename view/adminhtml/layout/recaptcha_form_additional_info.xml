@@ -15,4 +15,4 @@
             <block class="Faonni\ReCaptcha\Block\Adminhtml\Form" name="faonni.recaptcha.form" after="-" template="Faonni_ReCaptcha::form.phtml"/>
         </referenceContainer>
     </body>
-</page> 
+</page>

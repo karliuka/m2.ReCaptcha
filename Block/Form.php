@@ -18,18 +18,14 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 class Form extends Template
 {
     /**
-     * Helper
-     *
      * @var ReCaptchaHelper
      */
-    protected $helper;
+    private $helper;
 
     /**
-     * Json Helper
-     *
      * @var JsonHelper
      */
-    protected $jsonHelper;
+    private $jsonHelper;
 
     /**
      * Initialize Block
@@ -86,50 +82,6 @@ class Form extends Template
         return $this->jsonHelper->jsonEncode(
             $this->getConfig()
         );
-    }
-
-    /**
-     * Retrieve Site Key
-     *
-     * @return  string|null
-     * @deprecated 2.0.8
-     */
-    public function getSiteKey()
-    {
-        return $this->helper->getSiteKey();
-    }
-
-    /**
-     * Retrieve Type of ReCAPTCHA
-     *
-     * @return  string|null
-     * @deprecated 2.0.8
-     */
-    public function getType()
-    {
-        return $this->helper->getType();
-    }
-
-    /**
-     * Retrieve Size of ReCAPTCHA
-     *
-     * @deprecated 2.0.8
-     * @return  string|null
-     */
-    public function getSize()
-    {
-        return $this->helper->getSize();
-    }
-
-    /**
-     * Retrieve Color theme of ReCAPTCHA
-     *
-     * @return  string|null
-     * @deprecated 2.0.8
-     */
-    public function getTheme()
-    {
-        return $this->helper->getTheme();
     }
 
     /**

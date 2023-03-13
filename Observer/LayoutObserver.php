@@ -16,15 +16,11 @@ use Faonni\ReCaptcha\Helper\Data as ReCaptchaHelper;
 class LayoutObserver implements ObserverInterface
 {
     /**
-     * Form Config
-     *
      * @var AbstractFormConfig
      */
     protected $config;
 
     /**
-     * Helper
-     *
      * @var ReCaptchaHelper
      */
     protected $helper;

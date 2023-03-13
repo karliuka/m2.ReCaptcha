@@ -14,18 +14,16 @@ use Faonni\ReCaptcha\Model\Form\AbstractFormConfig;
 class AbstractForm implements ArrayInterface
 {
     /**
-     * FormConfig instance
-     *
      * @var AbstractFormConfig
      */
-    protected $config;
+    private $config;
 
     /**
      * Options as value-label pairs
      *
-     * @var array[]
+     * @var mixed[]
      */
-    protected $options;
+    private $options;
 
     /**
      * Initialize source
@@ -41,16 +39,16 @@ class AbstractForm implements ArrayInterface
     /**
      * Return array of options as value-label pairs
      *
-     * @return array[]
+     * @return mixed[]
      */
     public function toOptionArray()
     {
-        if ($this->options === null) {
+        if (null === $this->options) {
             $this->options = [];
             foreach ($this->config->getAvailableForms() as $name) {
                 $this->options[] = [
                     'label' => $this->config->getFormLabel($name),
-                    'value' => $name,
+                    'value' => $name
                 ];
             }
         }

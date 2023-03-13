@@ -6,7 +6,7 @@ define([
     'jquery',
     'Magento_Customer/js/action/login',
     'domReady!'
-], 
+],
 function($, login) {
     'use strict';
 
@@ -48,7 +48,7 @@ function($, login) {
                     var id = grecaptcha.render(element, this.options);
                     login.registerLoginCallback(function(data) {
                         grecaptcha.reset(id);
-                    }.bind(this));	
+                    }.bind(this));
                     clearInterval(interval);
                 }
             }.bind(this), 1000);
