@@ -86,7 +86,8 @@ class ValidateObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $request = $observer->getEvent()->getRequest();
+        /** @var RequestInterface $request */
+        $request = $observer->getEvent()->getData('request');
         $action = strtolower($request->getFullActionName());
 
         if ($request->isPost() && $this->helper->isPostAllowed($action)) {
@@ -95,7 +96,7 @@ class ValidateObserver implements ObserverInterface
                 $this->provider->validate($recaptcha, $this->helper->getSecretKey())) {
                 return;
             }
-            $controller = $observer->getEvent()->getControllerAction();
+            $controller = $observer->getEvent()->getData('controller_action');
             $this->setResponse($request, $controller, $action);
         }
     }
@@ -137,9 +138,10 @@ class ValidateObserver implements ObserverInterface
      * @param RequestInterface $request
      * @return string|null
      */
-    protected function getDecodeReCaptcha(RequestInterface $request)
+    private function getDecodeReCaptcha(RequestInterface $request)
     {
         if ($request->getContent()) {
+            /** @var string[] $params */
             $params = $this->jsonHelper->jsonDecode($request->getContent());
             if (isset($params[self::PARAM_RECAPTCHA])) {
                 return $params[self::PARAM_RECAPTCHA];

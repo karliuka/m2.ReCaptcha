@@ -5,6 +5,8 @@
  */
 namespace Faonni\ReCaptcha\Model\Form;
 
+use InvalidArgumentException;
+
 /**
  * Faonni ReCaptcha abstract form config
  */
@@ -21,19 +23,20 @@ class AbstractFormConfig
      * Validate format of forms configuration array
      *
      * @param mixed[] $config
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __construct(array $config)
     {
+        /** @var string[] $formInfo */
         foreach ($config as $formName => $formInfo) {
             if (!is_string($formName) || empty($formName)) {
-                throw new \InvalidArgumentException('Name for a ReCaptcha form has to be specified.');
+                throw new InvalidArgumentException('Name for a ReCaptcha form has to be specified.');
             }
             if (empty($formInfo['handle'])) {
-                throw new \InvalidArgumentException('Handle for a ReCaptcha form has to be specified.');
+                throw new InvalidArgumentException('Handle for a ReCaptcha form has to be specified.');
             }
             if (empty($formInfo['label'])) {
-                throw new \InvalidArgumentException('Label for a ReCaptcha form has to be specified.');
+                throw new InvalidArgumentException('Label for a ReCaptcha form has to be specified.');
             }
         }
         $this->config = $config;
@@ -57,10 +60,7 @@ class AbstractFormConfig
      */
     public function getFormPost($formName)
     {
-        if (isset($this->config[$formName]['post'])) {
-            return $this->config[$formName]['post'];
-        }
-        return null;
+        return $this->getFormData($formName)['post'] ?? null;
     }
 
     /**
@@ -71,24 +71,18 @@ class AbstractFormConfig
      */
     public function getFormHandle($formName)
     {
-        if (isset($this->config[$formName]['handle'])) {
-            return $this->config[$formName]['handle'];
-        }
-        return null;
+        return $this->getFormData($formName)['handle'] ?? null;
     }
 
     /**
      * Retrieve already translated label that corresponds to form name
      *
      * @param string $formName
-     * @return \Magento\Framework\Phrase|null
+     * @return string|null
      */
     public function getFormLabel($formName)
     {
-        if (isset($this->config[$formName]['label'])) {
-            return __($this->config[$formName]['label']);
-        }
-        return null;
+        return $this->getFormData($formName)['label'] ?? null;
     }
 
     /**
@@ -99,9 +93,22 @@ class AbstractFormConfig
      */
     public function isReferer($formName)
     {
-        if (isset($this->config[$formName]['referer'])) {
-            return (bool)$this->config[$formName]['referer'];
+        return (bool)($this->getFormData($formName)['referer'] ?? false);
+    }
+
+    /**
+     * Retrieve form data
+     *
+     * @param string $formName
+     * @return string[]
+     */
+    private function getFormData($formName)
+    {
+        if (!empty($this->config[$formName]) &&
+            is_array($this->config[$formName])
+        ) {
+            return $this->config[$formName];
         }
-        return false;
+        return [];
     }
 }
