@@ -3,6 +3,8 @@
  * Copyright © Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Faonni\ReCaptcha\Observer;
 
 use Magento\Framework\Event\Observer;
@@ -109,7 +111,7 @@ class ValidateObserver implements ObserverInterface
      * @param string $action
      * @return void
      */
-    protected function setResponse(RequestInterface $request, Action $controller, $action)
+    private function setResponse(RequestInterface $request, Action $controller, $action)
     {
         $this->actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
         if ($request->isXmlHttpRequest()) {
@@ -125,7 +127,7 @@ class ValidateObserver implements ObserverInterface
      * @param RequestInterface $request
      * @return string|null
      */
-    protected function getReCaptcha(RequestInterface $request)
+    private function getReCaptcha(RequestInterface $request)
     {
         return $request->isXmlHttpRequest()
             ? $this->getDecodeReCaptcha($request)
@@ -155,7 +157,7 @@ class ValidateObserver implements ObserverInterface
      *
      * @return void
      */
-    protected function addError()
+    private function addError()
     {
         $this->messageManager->addErrorMessage(
             new Phrase('There was an error with the reCAPTCHA code, please try again.')
@@ -169,7 +171,7 @@ class ValidateObserver implements ObserverInterface
      * @param string $action
      * @return void
      */
-    protected function redirect(Action $controller, $action)
+    private function redirect(Action $controller, $action)
     {
         $this->addError();
         $this->redirect->redirect(
@@ -184,7 +186,7 @@ class ValidateObserver implements ObserverInterface
      * @param  string $action
      * @return string|null
      */
-    protected function getRedirectUrl($action)
+    private function getRedirectUrl($action)
     {
         return $this->helper->isReferer($action)
             ? $this->redirect->getRefererUrl()
@@ -197,7 +199,7 @@ class ValidateObserver implements ObserverInterface
      * @param Action $controller
      * @return void
      */
-    protected function representJson(Action $controller)
+    private function representJson(Action $controller)
     {
         $json = $this->jsonHelper->jsonEncode([
             'error' => 1, // compatibility with checkout as guest js
